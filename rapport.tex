@@ -5,7 +5,10 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\bibliographystyle{ieeetran}
+
 \author{HUYNH Le Duy}
+
 \begin{document}
 
 \tableofcontents
@@ -13,7 +16,7 @@
 \chapter{State of art}
 \section{Well-composed Sets and Images}
 \paragraph{}
-As defined in [Well-composed set Latecki], a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement C(S) are weakly well-composed. A very 
+As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{C}$ are weakly well-composed. It is can also be defined using the notion of "critical configurations" which are 
 
 
 \section{Approach}
@@ -23,13 +26,38 @@ The morphological tree can be use to represent the image contents. Using the inf
 \paragraph{}
 A first possible approach is to compute the tree of shapes of the luminance, since a visible text must have a “dark over light” contrast or the opposite one. Each note of this tree is a zone which have similar value.
 \paragraph{}
-A second possible approach base on the Laplacian morphology on the gray-level image. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. By using laplacian morphology, we can distinguish object from the background. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box = \delta_\Box + \varepsilon_\Box -2id $ as defined in [15 of paper 1]. The structure of the tree of shapes of the Laplacian is:
+A second possible approach base on the Laplacian morphology on the gray-level image. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. By using laplacian morphology, we can distinguish object from the background. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box = \delta_\Box + \varepsilon_\Box -2id $ as defined in \cite{Vliet_anedge}. The structure of the tree of shapes of the Laplacian is:
 \begin{itemize}
 \item A zone negative or positive will form a note
 \item A zero point included in another note will belongs to that note
 \item A note included in another note is a descendant of the former note
 \end{itemize}
 \paragraph{}
-The tree of shapes of the Laplacian representation of region having similar luminance and their inclusion relationship. This tree is a light tree-base representation and well-suitable for some application such as image simplification [<give an example>] or smart binarization.
+The tree of shapes of the Laplacian representation of region having similar luminance and their inclusion relationship. This tree is a light tree-base representation and well-suitable for some application such as image simplification [<give an example>] or smart binarization. 
+
+
+
+
+\begin{thebibliography}{9}
+\bibitem{Latecki95}
+    {Longin Latecki and Ulrich Eckhardt and Azriel Rosenfeld},
+    {Well-Composed Sets},
+    {Computer Vision and Image Understanding},
+    {1995},
+    {61},
+    {70--83}
+    
+\bibitem{Vliet_anedge}
+	{Lucas J. Van Vliet and Ian T. Young and Guus L. Beckers},
+    {AN EDGE DETECTION MODEL BASED ON NON-LINEAR LAPLACE FILTERING},
+    Pattern Recognition and Artificial Intelligence,
+    pp. 63-73,
+    1988.  
+    
+}    
+\end{thebibliography}
 
 \end{document}
+
+
+
