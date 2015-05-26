@@ -4,6 +4,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{ {image/} }
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \bibliographystyle{ieeetran}
 
@@ -13,11 +15,25 @@
 
 \tableofcontents
 
-\chapter{State of art}
+\chapter{Theoretical Background}
+\section{Digital Topology and Self-Duality}
+\paragraph{}
+For a image defined in the regular cubical grid, the digital topology must be describe by a "Jordan pair" of connectivity $(c_\alpha,c_\beta)$ \cite{Kong:1989:DTI:71397.71400}.
+
 \section{Well-composed Sets and Images}
 \paragraph{}
-As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{C}$ are weakly well-composed. It is can also be defined using the notion of "critical configurations" which are 
-
+As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{C}$ are weakly well-composed. It can also be defined using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is weakly well-composed if these configuration do not appear.
+\paragraph{}
+The notion of well-composednessed has also been extended to gray-level images. A gray-level image $\mu$ is well-composed if any set $[\mu \geq \lambda ]$ is well-composed. The extended version of "critical configuration" is that every block \begin{tabular}{|c|c|}
+\hline 
+a & d \\ 
+\hline 
+c & b \\ 
+\hline 
+\end{tabular} 
+must verify interval(a,b) $\cap$ interval(c,d) $\neq \varnothing$ , where interval(a,b) = [min(a,b),max(a,b)].
+\paragraph{}
+An image is not a priori well-composed. There are 2 approach to get a well-composed image from the original image \cite{Geraud.15.ismm} by changing it pixel value (with possibility of alter the image's topology) or by a well-composed interpolation.
 
 \section{Approach}
 \subsection{The simple morphological tree-based framework for document representation}
@@ -53,8 +69,37 @@ The tree of shapes of the Laplacian representation of region having similar lumi
     Pattern Recognition and Artificial Intelligence,
     pp. 63-73,
     1988.  
+\bibitem {Geraud.15.ismm}
+  {Thierry G\'eraud and Edwin Carlinet and S\'ebastien Crozet},
+  {Self-Duality and Digital Topology: Links Between the
+		  Morphological Tree of Shapes and Well-Composed Gray-Level
+		  Images},
+  {Mathematical Morphology and Its Application to Signal and
+		  Image Processing -- Proceedings of the 12th International
+		  Symposium on Mathematical Morphology (ISMM)},
+  {2015},
+  {Lecture Notes in Computer Science Series},
+  {9082},
+  {Reykjavik, Iceland},
+  {Springer},
+  {J.A. Benediktsson and J. Chanussot and L. Najman and H.
+		  Talbot},
+  {573--584}.
+\bibitem {Kong:1989:DTI:71397.71400}
+	{Kong, T. Y. and Rosenfeld, A.},
+	{Digital Topology: Introduction and Survey},
+	{Comput. Vision Graph. Image Process.},
+	{Dec. 1989},
+	{48},
+	{3},
+	dec,
+	{1989},
+	{0734-189X},
+	{357--393},
+	{37},
+	{Academic Press Professional, Inc.},
+	{San Diego, CA, USA},    
     
-}    
 \end{thebibliography}
 
 \end{document}
