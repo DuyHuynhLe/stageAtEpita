@@ -1,0 +1,157 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\graphicspath{ {image/} }
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\bibliographystyle{ieeetran}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+% styles for flowcharts
+\tikzstyle{block} = [rectangle, draw, text width=10em, text centered, rounded corners, minimum height=4em,fill=blue!20]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Télécom Bretagne} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Stage de fin d'étude \\ % The assignment title
+\textsc{PROJET DE PLAN DE TRAVAIL}
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{HUYNH Le Duy} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\section{Le laboratoire, le libraire et le sujet}
+	\paragraph{LRDE :}
+	Le LRDE, Laboratoire de Recherche et Développement de l'EPITA est un laboratoire de recherche sous la tutelle de l'EPITA,  École pour l'informatique et les techniques avancées. Les thèmes de recherche sont le calcul scientifique générique et performant (ou comment concilier généralité et vitesse) et les modèles probabilistes (ou comment attaquer les problèmes tels que la reconnaissance des formes, l'authentification de la voix, la conformité approchée etc.).
+	\paragraph{Sujet :}
+A LRDE, je travaille dans l'équipe de Olena, une plateforme de LRDE. En utilisant des outils fournit par Olena, j'implémente un chaine de détecter des text sur l'image. L'approche est basé sur morphologie mathématique et les filtres connectés. Mon rôle est d'étudier et de mettre en œuvre une chaîne de détection de text basée sur Olena et l'optimise.
+	
+	\paragraph{Olena :}
+Olena est une plateforme dédiée au traitement d'image et de reconnaissance de formes. Sa composante principale est une bibliothèque C ++ générique et efficace appelé Milena. Il fournit un cadre pour mettre en œuvre chaînes d'outils de traitement d'images simples, rapides, sécuritaires, réutilisables et extensibles. La bibliothèque offre de nombreuses structures prêt-à-utiliser les données d'image (1D, 2D images, 3D images, e.t.c.) et des algorithmes. Les algorithmes intégrés dans Milena sont construits sur des entités classiques du domaine de traitement d'image (images, points / sites, domaines, voisins, e.t.c.). Cette conception permet aux développeurs de traitement d'image et les praticiens à comprendre facilement, de modification, de développer et d'étendre de nouveaux algorithmes, tout en conservant les traits essentiels de Milena: généricité et d'efficacité.
+
+
+\section{Plan de travail}
+%----------------------------------------------------------------------------------------
+%	Graph
+%----------------------------------------------------------------------------------------
+
+% Define block styles
+
+\begin{figure}
+ \begin{center}
+  \begin{tikzpicture}[node distance=2 cm, auto, >=stealth]
+   % nodes
+   \node[block] (a) 				
+   				{L'étude de bibliothèque};
+ 				
+   \node[block] (b)  [below of=a]	
+   				{L'étude de libraire};
+   \node[block] (c)  [below of=b]   
+   				{La conception d'algorithmes et l'implémentation};
+
+   \node[block] (d)  [below of=c]                       
+   				{L'optimisation le code};
+   \node[block] (e)  [below of=d]                       
+   				{L'écriture du rapport};
+   \node[block] (f)  [below of=e]
+                {La préparation pour le Soutenant};
+                
+   %time
+   \node[cloud] (a1) [right of=a, node distance=3.5cm]
+   				{3 semaines};
+   \node[cloud] (b1) [right of=b, node distance=3.5cm]
+   				{1 semaines};
+   \node[cloud] (c1) [right of=c, node distance=3.5cm]
+   				{3 mois};
+   \node[cloud] (d1) [right of=d, node distance=3.5cm]
+   				{1 mois};
+   \node[cloud] (e1) [right of=e, node distance=3.5cm]
+   				{0.5 mois};
+   \node[cloud] (f1) [right of=f, node distance=3.5cm]
+   				{0.5 mois};   				  				   				   				   				
+
+   % edges
+   \draw[->] (a) -- (b);
+   \draw[->] (b) -- (c);
+   \draw[->] (c) -- (d);
+   \draw[->] (d) -- (e);
+   \draw[->] (e) -- (f);
+  \end{tikzpicture}
+  \caption{Plan de travail}
+  \label{flowchart}
+ \end{center}
+\end{figure}
+
+	\paragraph{L'étude de bibliothèque}
+	Dans la première partie de mon stage, j'étudie l'état de l'art à travers l'article écrit par le laboratoire et autres articles et documents. Les articles lus sont sur les différentes méthodes de détection de texte et le filtre connecté, well-composed image et la presentation d'image par arbre ainsi que l'approche utilisant morphologies laplaciens dans un article inédit de M. Thierry Géraud que je vais mettre en œuvre.
+	\paragraph{L'étude de libraire}
+	Puis je vais passer quelques jours à se familiariser avec la bibliothèque Olena en travaillant sur des exemples et mettre en œuvre un certain simple routine de l'utiliser.
+	\paragraph{La conception d'algorithmes et l'implémentation}
+	Ensuite, je vais commencer à travailler sur la mise en œuvre de plusieurs partie de la chaîne de détection de texte. Les étapes sont dans \ref{Process}
+	
+\begin{figure}
+ \begin{center}
+  \begin{tikzpicture}[node distance=2 cm, auto, >=stealth]
+   % nodes
+   \node[cloud] (a) 				
+   				{Entre};
+ 				
+   \node[block,text width=5em] (b)  [right of=a, node distance=3cm]	
+   				{Image en niveau de gris};
+   \node[block, text width=8em] (c)  [right of=b, node distance=4cm]   
+   				{La conception d'algorithmes et l'implémentation};
+
+   \node[block, text width=8em] (d)  [right of=c, node distance=4.5cm]                       
+   				{Calcul de laplaciens morphologique};
+   \node[block,text width=5em] (e)  [below of=d, node distance=4cm]                       
+   				{Étiquetage Composant};
+   \node[block] (f)  [left of=e, node distance=4cm]
+                {Composant Regroupement};
+   \node[block] (g)  [left of=f, node distance=5cm]
+                {Élimination des faux positifs}; 
+   \node[cloud] (h)  [left of=g, node distance=4cm]
+                {output};                               
+                   				
+
+   % edges
+   \draw[->] (a) -- (b);
+   \draw[->] (b) -- (c);
+   \draw[->] (c) -- (d);
+   \draw[->] (d) -- (e);
+   \draw[->] (e) -- (f);
+   \draw[->] (f) -- (g);
+   \draw[->] (g) -- (h);
+  \end{tikzpicture}
+  \caption{Chaine de détection de text a implémenter}
+  \label{Process}
+ \end{center}
+\end{figure}
+
+	\paragraph{L'optimisation le code}
+	En fin, je vais essayer d'améliorer la performance du code.
+	\paragraph{L'écriture du rapport}
+	Je vais synthèse des résultats ainsi que la partie théorique a été écrit pour avoir un rapport complet dans environ 2 semaine.
+	\paragraph{La préparation pour le Soutenant}
+	Alors je vais me préparer pour ma présentation final.
+
+\end{document}
