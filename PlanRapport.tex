@@ -1,0 +1,115 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\graphicspath{ {image/} }
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\bibliographystyle{ieeetran}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+% styles for flowcharts
+\tikzstyle{block} = [rectangle, draw, text width=10em, text centered, rounded corners, minimum height=4em,fill=blue!20]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Télécom Bretagne} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Stage de fin d'étude \\ % The assignment title
+\textsc{PLAN DU RAPPORT FINAL}
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{HUYNH Le Duy} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\section{Introduction}
+\subsection{Context of the internship}
+\subsection{Objective and challenges}
+\subsection{Proposed methodology}
+\section{Theoretical Background}
+\subsection{State-of-Art}
+In this section, I will write about different approach in detecting text in natural images.
+\subsection{Digital Topology and Self-Duality}
+In this section, I will talk about digital topology and self-duality which links to the approach LRDE takes.
+\subsection{Well-composed Images}
+Then, I will follow by well-composed images, which has many interesting attribute for our approach.
+\subsection{Tree-base presentation of image and connected filter}
+In this section, I will talk about connected filter and tree-base presentation of image which have a special feature of reserving contour. This is the starting point for our approach. 
+\section{Our approach}
+\begin{figure}
+ \begin{center}
+  \begin{tikzpicture}[node distance=2 cm, auto, >=stealth]
+   % nodes
+   \node[cloud] (a) 				
+   				{Entre};
+ 				
+   \node[block,text width=5em] (b)  [right of=a, node distance=3cm]	
+   				{gray-level images};
+   \node[block, text width=8em] (c)  [right of=b, node distance=4cm]   
+   				{Calculate gray morphological laplacian and gradient};
+
+   \node[block, text width=8em] (d)  [right of=c, node distance=4.5cm]                       
+   				{labeling composant};
+   \node[block,text width=5em] (e)  [below of=d, node distance=4cm]                       
+   				{Component grouping};
+   \node[block] (f)  [left of=e, node distance=4cm]
+                {Bounding box calculation};
+   \node[block] (g)  [left of=f, node distance=5cm]
+                {False positive elimination}; 
+   \node[cloud] (h)  [left of=g, node distance=4cm]
+                {output};                               
+                   				
+
+   % edges
+   \draw[->] (a) -- (b);
+   \draw[->] (b) -- (c);
+   \draw[->] (c) -- (d);
+   \draw[->] (d) -- (e);
+   \draw[->] (e) -- (f);
+   \draw[->] (f) -- (g);
+   \draw[->] (g) -- (h);
+  \end{tikzpicture}
+  \caption{Chaine de détection de text a implémenter}
+  \label{Process}
+ \end{center}
+\end{figure}
+\section{Implementation}
+\subsection{Well-composed Interpolation}
+\subsection{Morphological laplacian and gradient}
+\subsection{Labeling by front propagation}
+\subsection{Average gradient of contour calculation}
+\subsection{Component grouping and bounding box calculation}
+\subsection{False positive elimination}
+\section{Experimental results}
+\subsection{Test image sets}
+\subsection{Evaluation criteria}
+\subsection{Results and comments}
+\section{Optimization and results}
+\section{Conclusions and perspectives}
+\subsection{Conclusions}
+\subsection{Perspectives}
+\section{Bibliography}
+
+
+
+
+	
+\end{document}
