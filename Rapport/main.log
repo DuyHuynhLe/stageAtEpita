@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.3.12)  24 JUN 2015 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.3.12)  24 JUN 2015 12:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -635,58 +635,66 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `main.lof'.
 
 
-(./0chapterTheory/chapterTheory.tex [2
+(./1chapterIntroduction/chapterIntroduction.tex [2
 
 ]
 Chapter 1.
-<0chapterTheory/image/im1.png, id=83, 122.4575pt x 121.45375pt>
-File: 0chapterTheory/image/im1.png Graphic file (type png)
+) (./2chapterStateOfArt/chapterStateOfArt.tex [3
 
-<use 0chapterTheory/image/im1.png>
-Package pdftex.def Info: 0chapterTheory/image/im1.png used on input line 10.
+]
+Chapter 2.
+) (./3chapterTheory/chapterTheory.tex [4
+
+]
+Chapter 3.
+<3chapterTheory/image/im1.png, id=118, 122.4575pt x 121.45375pt>
+File: 3chapterTheory/image/im1.png Graphic file (type png)
+
+<use 3chapterTheory/image/im1.png>
+Package pdftex.def Info: 3chapterTheory/image/im1.png used on input line 10.
 (pdftex.def)             Requested size: 122.45718pt x 121.45343pt.
 
-<0chapterTheory/image/im2.png, id=85, 122.4575pt x 120.45pt>
-File: 0chapterTheory/image/im2.png Graphic file (type png)
+<3chapterTheory/image/im2.png, id=120, 122.4575pt x 120.45pt>
+File: 3chapterTheory/image/im2.png Graphic file (type png)
 
-<use 0chapterTheory/image/im2.png>
-Package pdftex.def Info: 0chapterTheory/image/im2.png used on input line 12.
+<use 3chapterTheory/image/im2.png>
+Package pdftex.def Info: 3chapterTheory/image/im2.png used on input line 12.
 (pdftex.def)             Requested size: 122.45718pt x 120.44969pt.
 
-<0chapterTheory/image/im3.png, id=86, 122.4575pt x 122.4575pt>
-File: 0chapterTheory/image/im3.png Graphic file (type png)
+<3chapterTheory/image/im3.png, id=121, 122.4575pt x 122.4575pt>
+File: 3chapterTheory/image/im3.png Graphic file (type png)
 
-<use 0chapterTheory/image/im3.png>
-Package pdftex.def Info: 0chapterTheory/image/im3.png used on input line 14.
+<use 3chapterTheory/image/im3.png>
+Package pdftex.def Info: 3chapterTheory/image/im3.png used on input line 14.
 (pdftex.def)             Requested size: 122.45718pt x 122.45718pt.
 
-<0chapterTheory/image/confi1.jpg, id=99, 10.0375pt x 10.0375pt>
-File: 0chapterTheory/image/confi1.jpg Graphic file (type jpg)
+<3chapterTheory/image/confi1.jpg, id=134, 10.0375pt x 10.0375pt>
+File: 3chapterTheory/image/confi1.jpg Graphic file (type jpg)
 
-<use 0chapterTheory/image/confi1.jpg>
-Package pdftex.def Info: 0chapterTheory/image/confi1.jpg used on input line 30.
-
-(pdftex.def)             Requested size: 10.03746pt x 10.03746pt.
-
-<0chapterTheory/image/confi2.jpg, id=100, 10.0375pt x 10.0375pt>
-File: 0chapterTheory/image/confi2.jpg Graphic file (type jpg)
-
-<use 0chapterTheory/image/confi2.jpg>
-Package pdftex.def Info: 0chapterTheory/image/confi2.jpg used on input line 30.
+<use 3chapterTheory/image/confi1.jpg>
+Package pdftex.def Info: 3chapterTheory/image/confi1.jpg used on input line 30.
 
 (pdftex.def)             Requested size: 10.03746pt x 10.03746pt.
- [3
 
- <./0chapterTheory/image/im1.png> <./0chapterTheory/image/im2.png> <./0chapterT
+<3chapterTheory/image/confi2.jpg, id=135, 10.0375pt x 10.0375pt>
+File: 3chapterTheory/image/confi2.jpg Graphic file (type jpg)
+
+<use 3chapterTheory/image/confi2.jpg>
+Package pdftex.def Info: 3chapterTheory/image/confi2.jpg used on input line 30.
+
+(pdftex.def)             Requested size: 10.03746pt x 10.03746pt.
+ [5
+
+ <./3chapterTheory/image/im1.png> <./3chapterTheory/image/im2.png> <./3chapterT
 heory/image/im3.png>]
 LaTeX Font Info:    Try loading font information for U+euf on input line 52.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ))
-(./1ChapterOurApproach/ourApproach.tex [4 <./0chapterTheory/image/confi1.jpg> <
-./0chapterTheory/image/confi2.jpg>] [5]
-Chapter 2.
+(./4chapterOurApproach/ourApproach.tex [6 <./3chapterTheory/image/confi1.jpg> <
+./3chapterTheory/image/confi2.jpg>] [7]
+Chapter 4.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -694,15 +702,15 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 12.
 )
-(./2ChapterImplementation/ourApproach.tex [6
+(./5chapterImplementation/ourApproach.tex [8
 
 ]
-Chapter 3.
-) (./main.bbl [7
+Chapter 5.
+) (./main.bbl [9
 
-] [8])
+] [10])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 29.
- [9
+ [11
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 29.
@@ -710,14 +718,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 29.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 29.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 29.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E3D3E3B2F2146EDF8F23E197534DC6C3;871.
+(rerunfilecheck)             Checksum: 80A05D5FA2EDCB02941609DAE2C53119;1177.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 29.
  ) 
 Here is how much of TeX's memory you used:
- 8199 strings out of 493105
- 120510 string characters out of 6137072
- 219739 words of memory out of 5000000
- 11484 multiletter control sequences out of 15000+600000
+ 8221 strings out of 493105
+ 120906 string characters out of 6137072
+ 219740 words of memory out of 5000000
+ 11489 multiletter control sequences out of 15000+600000
  11764 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,8n,44p,1106b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -733,10 +741,10 @@ amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb>
-Output written on main.pdf (9 pages, 152967 bytes).
+Output written on main.pdf (11 pages, 155421 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 232 compressed objects within 3 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

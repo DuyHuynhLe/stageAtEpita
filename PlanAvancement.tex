@@ -1,0 +1,118 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\graphicspath{ {image/} }
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\bibliographystyle{ieeetran}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+% styles for flowcharts
+\tikzstyle{block} = [rectangle, draw, text width=10em, text centered, rounded corners, minimum height=4em,fill=blue!20]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
+    minimum height=2em]
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize
+\hspace{1.5 cm}
+\includegraphics[width=0.15\textwidth]{logo/TB_contour_quadri.jpg}
+\hspace{10 cm}
+\includegraphics[width=0.15\textwidth]{logo/logo-lrde.png} \\ [2pt]
+\textsc{Télécom Bretagne} 
+\hspace{9.5 cm}
+\textsc{LRDE} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Stage de Fin d'Étude \\ % The assignment title
+\textsc{PLAN D'AVANCEMENT DE TRAVAUX}
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{HUYNH Le Duy} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+\maketitle % Print the title
+\section{Les travaux finis}
+Je suis maintenant bien avancés dans mon stage. J'ai fini la partie bibliographie et bien amélioré ma connaissance dans texte extraction. Je suis familier avec Olena (libraire en traitement d'image de laboratoire LRDE) et l'utilise couramment. À ce moment, j'ai réalisé la plupart des partie dans la chaine défini a la début du projet. J'ai obtenu quelque résultat très bien comme dans le cas \ref{ori} (les textes détectés: \ref{text}). 
+Mais pour les images plus compliqués comme \ref{ori2} il y a  beaucoup de faux positives : \ref{text2}.
+J'ai écrit également quelque partie de mon rapport final.
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{avancement/320.jpg}
+                \caption{}
+                \label{ori}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{avancement/320.png}
+                \caption{}
+                \label{text}
+        \end{subfigure}
+        
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{avancement/100.jpg}
+                \caption{}
+                \label{ori2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{avancement/100.png}
+                \caption{}
+                \label{text2}
+        \end{subfigure}        
+        \caption{La detection des textes dans l'image naturelle. Les textes détectées sont dans des boîtes rouges}\label{textDetection}
+\end{figure}
+\section{Plan d'avancement de travaux}
+Dans les mois suivants, je vais continuer a implémenter la chaine de détection de texte, Il faut ajouter un étape de validation les candidate de texte pour éliminer des faux positives. Après, je vais optimaliser le code pour améliorer la performance. Dans le même temps, Je vais continuer écrire du rapport et je vais le finaliser 2 semaines avant la date limite. Après, je vais préparer pour la soutenant finale. La plan est comme dans Figure \ref{flowchart}.
+
+%----------------------------------------------------------------------------------------
+%	Graph
+%----------------------------------------------------------------------------------------
+
+\begin{figure}
+ \begin{center}
+  \begin{tikzpicture}[node distance=2 cm, auto, >=stealth]
+   % nodes
+   \node[block] (c)    
+   				{L'implémentation};
+   \node[block] (d)  [below of=c]                       
+   				{L'optimisation le code};
+   \node[block] (e)  [below of=d]                       
+   				{Finaliser du rapport};
+   \node[block] (f)  [below of=e]
+                {La préparation pour le Soutenant};
+                
+   %time
+   \node[cloud] (c1) [right of=c, node distance=3.5cm]
+   				{1.5 mois};
+   \node[cloud] (d1) [right of=d, node distance=3.5cm]
+   				{2 semaines};
+   \node[cloud] (e1) [right of=e, node distance=3.5cm]
+   				{2 semaines};
+   \node[cloud] (f1) [right of=f, node distance=3.5cm]
+   				{2 semaines};   				  				   				   				   				
+
+   % edges
+   \draw[->] (c) -- (d);
+   \draw[->] (d) -- (e);
+   \draw[->] (e) -- (f);
+  \end{tikzpicture}
+  \caption{Plan de travail}
+  \label{flowchart}
+ \end{center}
+\end{figure}
+\end{document}

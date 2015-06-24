@@ -1,30 +1,37 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Theoretical Background}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Digital Topology and Self-Duality}{3}{section.1.1}
-\contentsline {paragraph}{}{3}{section*.3}
-\contentsline {paragraph}{}{3}{section*.5}
-\contentsline {paragraph}{}{3}{section*.6}
-\contentsline {section}{\numberline {1.2}Well-composed Images}{4}{section.1.2}
-\contentsline {paragraph}{}{4}{section*.7}
-\contentsline {paragraph}{}{4}{section*.8}
-\contentsline {paragraph}{}{4}{section*.9}
-\contentsline {section}{\numberline {1.3}Connected filter}{4}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Morphological Tree-Based Image Representation}{4}{subsection.1.3.1}
-\contentsline {paragraph}{}{4}{section*.10}
-\contentsline {paragraph}{}{4}{section*.11}
-\contentsline {paragraph}{To be continue... (consider add the attribute and definition of Sat)}{5}{section*.12}
-\contentsline {chapter}{\numberline {2}Approach}{6}{chapter.2}
-\contentsline {section}{\numberline {2.1}The simple morphological tree-based framework for image representation}{6}{section.2.1}
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Context of the internship}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Objective and challenges}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Proposed methodology}{3}{section.1.3}
+\contentsline {paragraph}{To be continue...}{3}{section*.3}
+\contentsline {chapter}{\numberline {2}State-of-Art}{4}{chapter.2}
+\contentsline {paragraph}{To be continue...}{4}{section*.4}
+\contentsline {chapter}{\numberline {3}Theoretical Background}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Digital Topology and Self-Duality}{5}{section.3.1}
+\contentsline {paragraph}{}{5}{section*.5}
+\contentsline {paragraph}{}{5}{section*.7}
+\contentsline {paragraph}{}{5}{section*.8}
+\contentsline {section}{\numberline {3.2}Well-composed Images}{6}{section.3.2}
+\contentsline {paragraph}{}{6}{section*.9}
+\contentsline {paragraph}{}{6}{section*.10}
+\contentsline {paragraph}{}{6}{section*.11}
+\contentsline {section}{\numberline {3.3}Connected filter}{6}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Morphological Tree-Based Image Representation}{6}{subsection.3.3.1}
+\contentsline {paragraph}{}{6}{section*.12}
 \contentsline {paragraph}{}{6}{section*.13}
-\contentsline {paragraph}{}{6}{section*.14}
-\contentsline {paragraph}{}{6}{section*.15}
-\contentsline {paragraph}{}{6}{section*.16}
-\contentsline {chapter}{\numberline {3}Implementation}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Well-composed Interpolation}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Objects labeling}{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Labeling by front propagation}{7}{subsection.3.2.1}
-\contentsline {paragraph}{}{7}{section*.17}
-\contentsline {paragraph}{}{7}{section*.18}
-\contentsline {subsection}{\numberline {3.2.2}Average gradient calculation}{7}{subsection.3.2.2}
-\contentsline {paragraph}{}{7}{section*.19}
-\contentsline {paragraph}{}{7}{section*.20}
+\contentsline {paragraph}{To be continue... (consider add the attribute and definition of Sat)}{7}{section*.14}
+\contentsline {chapter}{\numberline {4}Approach}{8}{chapter.4}
+\contentsline {section}{\numberline {4.1}The simple morphological tree-based framework for image representation}{8}{section.4.1}
+\contentsline {paragraph}{}{8}{section*.15}
+\contentsline {paragraph}{}{8}{section*.16}
+\contentsline {paragraph}{}{8}{section*.17}
+\contentsline {paragraph}{}{8}{section*.18}
+\contentsline {chapter}{\numberline {5}Implementation}{9}{chapter.5}
+\contentsline {section}{\numberline {5.1}Well-composed Interpolation}{9}{section.5.1}
+\contentsline {section}{\numberline {5.2}Objects labeling}{9}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Labeling by front propagation}{9}{subsection.5.2.1}
+\contentsline {paragraph}{}{9}{section*.19}
+\contentsline {paragraph}{}{9}{section*.20}
+\contentsline {subsection}{\numberline {5.2.2}Average gradient calculation}{9}{subsection.5.2.2}
+\contentsline {paragraph}{}{9}{section*.21}
+\contentsline {paragraph}{}{9}{section*.22}
