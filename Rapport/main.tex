@@ -1,0 +1,31 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{import}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}\usepackage{subcaption}
+\usepackage{hyperref}
+\graphicspath{ {image/} }
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\author{HUYNH Le Duy}
+
+\begin{document}
+
+\tableofcontents
+\listoffigures
+
+\import{0chapterTheory/}{chapterTheory}
+\import{1ChapterOurApproach/}{ourApproach}
+\import{2ChapterImplementation/}{ourApproach}
+\bibliographystyle{plain}
+\bibliography{Reference/bibli}
+
+\end{document}
+
+
+

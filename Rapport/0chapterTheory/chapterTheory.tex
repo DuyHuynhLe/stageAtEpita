@@ -1,25 +1,5 @@
-\documentclass[12pt,a4paper]{report}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{hyperref}
-\graphicspath{ {image/} }
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
-
-\author{HUYNH Le Duy}
-
-\begin{document}
-
-\tableofcontents
-
-\listoffigures
-
+\graphicspath{ {0chapterTheory/image/} }
 \chapter{Theoretical Background}
 \section{Digital Topology and Self-Duality}
 \paragraph{}
@@ -72,59 +52,3 @@ One strategy to define connected operators replies on a hierarchical region-base
 \paragraph{} \textbf{A Self-Dual Tree}:We use two set $ \mathcal{T}_< (\mu)$ and $ \mathcal{T}_\geq (\mu)$ with their holes filled to define two other sets $ \mathcal{S}_< (\mu)$ and $ \mathcal{S}_< (\mu)$. We denote \textit{Sat} as the cavity-fill-in operator, these new sets are defined as: $ \mathcal{S}_< (\mu) = \lbrace Sat(\Gamma);\Gamma \in \mathcal{T}_<(\mu)\rbrace$ and $ \mathcal{S}_\geq (\mu) = \lbrace Sat(\Gamma);\Gamma \in \mathcal{T}_\geq (\mu)\rbrace$. The tree of shape is defined as: $\mathfrak{S}(\mu) = \mathcal{S}_< (\mu) \bigcup \mathcal{S}_\geq (\mu) $. We have also $\Gamma \subset \Gamma ' $ or $\Gamma \cap \Gamma '= \emptyset$ with $\Gamma , \Gamma ' \in \mathcal{S}$. There is a quasi-linear algorithm to compute the tree of shape, which works also in the case of nD presented in \cite{geraud.13.ismm}. This tree is \textit{self-dual} because many self dual operation can be defined in this tree \textit{<reading article>}  .
 	
 \paragraph{To be continue... (consider add the attribute and definition of Sat)}
-
-\chapter{Approach} \label{Approach}
-\section{The simple morphological tree-based framework for image representation}
-\paragraph{}
-The morphological tree can be use to represent the image contents. Using the information carried by that tree, we can keep only interesting elements such as text. To compute a representation tree, mathematical morphology requires at first an order function of pixel values. In the case of color images, since there is not a natural order of color, the definition of is important and affect the performance. A classical workaround is to sort using their luminance by converting color image to gray-level image. 
-\paragraph{}
-A first possible approach is to compute the tree of shapes of the luminance, since a visible text must have a “dark over bright” contrast or the opposite one. Each note of this tree is a zone which have similar value.
-\paragraph{}
-A second possible approach base on the Laplacian morphology on the gray-level image. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. By using laplacian morphology, we can distinguish object from the background. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box = \delta_\Box + \varepsilon_\Box -2id $ as defined in \cite{Vliet_anedge}. The structure of the tree of shapes of the Laplacian is:
-\begin{itemize}
-\item A zone negative or positive will form a note
-\item A zero point included in another note will belongs to that note
-\item A note included in another note is a descendant of the former note
-\end{itemize}
-\paragraph{}
-The tree of shapes of the Laplacian representation of region having similar luminance and their inclusion relationship. This tree is a light tree-base representation and well-suitable for some application such as image simplification [<give an example>] or smart binarization. 
-
-\chapter{Implementation}
-
-This chapter will clarify the implementation of the approach present in \autoref{Approach}.
-
-\section{Well-composed Interpolation}
-
-about the well composed implementation by median, multiple by 2, the important of sign
-
-\section{Objects labeling}
-
-\subsection{Labeling by front propagation}
-\paragraph{} From the well-composed interposed laplacian, we will label all connected regions by front propagation. A region includes all pixel that has same sign of laplacian and zeros that touch that region. By that definition, the zeros will always belong to the outer region and invariant to the contrast between 2 regions therefore this operation is self-dual. 
-\paragraph{}As we only interest in the sign of the Laplacian, a region is always surrounded by only one other region. We construct at the same time the tree-of-shape as a table of parents instead of an image with the same size as original image as in \cite{geraud.13.ismm}. 
-
-\subsection{Average gradient calculation}
-\paragraph{} We aim to remove and merge notes which has low contrast with the upper note. These notes will have low gradient in the contour, by calculate average gradient of thess points, we can decide which note to remove.There are many approach to obtain the contour, for example we can use a dilation follow by a erosion using a element cross as structure element to obtain the contour. But the calculation of erosion and dilation costs, so we want a simple contour following method. 
-\paragraph{} For every new region detected except the first one (root), we will first follow the outer contour of the object to calculate its average gradient. As we read the image from left to right, top to bottom, first point of new region is always the left top most point. We initialize the starting point is the one on its left and initial last-direction is 0 (direction are numbered as in \ref{directionToSearch}). We test 8 possible direction of next point to find the one which is in labeled region and has the new region on its right. The searching order is a semicircle clockwise from last-direction plus a semicircle counter clockwise from last-direction. We continue until reaching the starting point. 
-\begin{figure}
-\begin{tabular}{|c|c|c|}
-\hline 
-6 & 7 & 0 \\ 
-\hline 
-5 & * & 1 \\ 
-\hline 
-4 & 3 & 2 \\ 
-\hline 
-\end{tabular}  
-\centering
-\caption{Possible positions of next point}
-\label{directionToSearch}
-\end{figure}
-
-\bibliographystyle{plain}
-\bibliography{bibli}
-
-\end{document}
-
-
-

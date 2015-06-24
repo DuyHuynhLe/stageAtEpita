@@ -25,8 +25,14 @@
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
 
 \title{	
-\normalfont \normalsize 
-\textsc{Télécom Bretagne} \\ [25pt] % Your university, school and/or department name(s)
+\normalfont \normalsize
+\hspace{1.5 cm}
+\includegraphics[width=0.15\textwidth]{logo/TB_contour_quadri.jpg}
+\hspace{10 cm}
+\includegraphics[width=0.15\textwidth]{logo/logo-lrde.png} \\ [2pt]
+\textsc{Télécom Bretagne} 
+\hspace{9.5 cm}
+\textsc{LRDE} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
 \huge Stage de fin d'étude \\ % The assignment title
 \textsc{PLAN DU RAPPORT FINAL}
@@ -40,13 +46,18 @@
 \begin{document}
 
 \maketitle % Print the title
+
+The following section is the outline of my final report. 
+
 \section{Introduction}
 \subsection{Context of the internship}
 \subsection{Objective and challenges}
 \subsection{Proposed methodology}
-\section{Theoretical Background}
-\subsection{State-of-Art}
+\section{State-of-Art}
 In this section, I will write about different approach in detecting text in natural images.
+\section{Theoretical Background}
+\subsection{Mathematical morphology}
+In this section, I will talk about the basic of mathematical morphology, include erosion, dilate, morphological gradient and morphological laplacian.
 \subsection{Digital Topology and Self-Duality}
 In this section, I will talk about digital topology and self-duality which links to the approach LRDE takes.
 \subsection{Well-composed Images}
@@ -54,12 +65,13 @@ Then, I will follow by well-composed images, which has many interesting attribut
 \subsection{Tree-base presentation of image and connected filter}
 In this section, I will talk about connected filter and tree-base presentation of image which have a special feature of reserving contour. This is the starting point for our approach. 
 \section{Our approach}
+In this section, I will explain our approach and the chain of processing as in Figure \ref{Process}
 \begin{figure}
  \begin{center}
   \begin{tikzpicture}[node distance=2 cm, auto, >=stealth]
    % nodes
    \node[cloud] (a) 				
-   				{Entre};
+   				{Input};
  				
    \node[block,text width=5em] (b)  [right of=a, node distance=3cm]	
    				{gray-level images};
@@ -68,7 +80,7 @@ In this section, I will talk about connected filter and tree-base presentation o
 
    \node[block, text width=8em] (d)  [right of=c, node distance=4.5cm]                       
    				{labeling composant};
-   \node[block,text width=5em] (e)  [below of=d, node distance=4cm]                       
+   \node[block,text width=5em] (e)  [below of=d, node distance=3cm]                       
    				{Component grouping};
    \node[block] (f)  [left of=e, node distance=4cm]
                 {Bounding box calculation};
@@ -92,6 +104,7 @@ In this section, I will talk about connected filter and tree-base presentation o
  \end{center}
 \end{figure}
 \section{Implementation}
+In this section, I will demonstrate implementation detail and Pseudo codes.
 \subsection{Well-composed Interpolation}
 \subsection{Morphological laplacian and gradient}
 \subsection{Labeling by front propagation}
@@ -99,11 +112,14 @@ In this section, I will talk about connected filter and tree-base presentation o
 \subsection{Component grouping and bounding box calculation}
 \subsection{False positive elimination}
 \section{Experimental results}
+In this section, I will point out test conditions which include the image sets, evaluation criteria as well as result comments and comparison with different methods.
 \subsection{Test image sets}
 \subsection{Evaluation criteria}
 \subsection{Results and comments}
 \section{Optimization and results}
+In this section, I will talk about the optimization part and its affect on the performance of our implementation.
 \section{Conclusions and perspectives}
+In this section, I will give a conclusions and talk about future works and further possible implementation of this subject.
 \subsection{Conclusions}
 \subsection{Perspectives}
 \section{Bibliography}

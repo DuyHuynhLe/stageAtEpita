@@ -1,0 +1,59 @@
+\begin{thebibliography}{1}
+
+\bibitem{Geraud.15.ismm}
+Thierry G\'eraud, Edwin Carlinet, and S\'ebastien Crozet.
+\newblock Self-duality and digital topology: Links between the morphological
+  tree of shapes and well-composed gray-level images.
+\newblock In J.A. Benediktsson, J.~Chanussot, L.~Najman, and H.~Talbot,
+  editors, {\em Mathematical Morphology and Its Application to Signal and Image
+  Processing -- Proceedings of the 12th International Symposium on Mathematical
+  Morphology (ISMM)}, volume 9082 of {\em Lecture Notes in Computer Science
+  Series}, pages 573--584, Reykjavik, Iceland, 2015. Springer.
+
+\bibitem{geraud.13.ismm}
+Thierry G\'eraud, Edwin Carlinet, S\'ebastien Crozet, and Laurent Najman.
+\newblock A quasi-linear algorithm to compute the tree of shapes of {$n$-D}
+  images.
+\newblock In C.L.~Luengo Hendriks, G.~Borgefors, and R.~Strand, editors, {\em
+  Mathematical Morphology and Its Application to Signal and Image Processing --
+  Proceedings of the 11th International Symposium on Mathematical Morphology
+  (ISMM)}, volume 7883 of {\em Lecture Notes in Computer Science Series}, pages
+  98--110, Uppsala, Sweden, 2013. Springer.
+
+\bibitem{Kong:1989:DTI:71397.71400}
+T.~Y. Kong and A.~Rosenfeld.
+\newblock Digital topology: Introduction and survey.
+\newblock 37:357--393, Dec. 1989.
+
+\bibitem{Latecki95}
+Longin Latecki, Ulrich Eckhardt, and Azriel Rosenfeld.
+\newblock Well-composed sets.
+\newblock {\em Computer Vision and Image Understanding}, 61:70--83, 1995.
+
+\bibitem{Monasse.2000}
+P.~Monasse and F.~Guichard.
+\newblock Fast computation of a contrast-invariant image representation.
+\newblock {\em IEEE Transactions on Image Processing}, 9(5):860--872, May 2000.
+
+\bibitem{Salembier95flatzones}
+P.~Salembier and J.~Serra.
+\newblock Flat zones filtering, connected operators, and filters by
+  reconstruction.
+\newblock {\em IEEE Transactions on Image Processing}, 4:1153--1160, 1995.
+
+\bibitem{Salembier2009}
+P.~Salembier and M.H.F. Wilkinson.
+\newblock Connected operators.
+\newblock {\em Signal Processing Magazine, IEEE}, 26(6):136--157, November
+  2009.
+
+\bibitem{Serra1993}
+Jean~C. Serra and Philippe Salembier.
+\newblock Connected operators and pyramids.
+\newblock {\em Proc. SPIE}, pages 65--76, 1993.
+
+\bibitem{Vliet_anedge}
+Lucas J.~Van Vliet, Ian~T. Young, and Guus~L. Beckers.
+\newblock An edge detection model based on non-linear laplace filtering, 1988.
+
+\end{thebibliography}
