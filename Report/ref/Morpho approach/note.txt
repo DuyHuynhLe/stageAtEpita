@@ -1,0 +1,2 @@
+Hori.1999.icdar used sobel edge detector to extract contours. Then, a dilation operation is apply to roughly estimate the character regions. They made high assumsion on text size and can only if the text region is limited.
+//no detail how false possitives are eliminated?
