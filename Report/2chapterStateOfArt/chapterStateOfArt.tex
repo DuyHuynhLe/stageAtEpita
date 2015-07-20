@@ -1,0 +1,22 @@
+
+\graphicspath{ {1chapterStateOfArt/image/} }
+\chapter{State-of-Art} 
+
+\par
+Text in images and video contains valuable information. Text appearing in images and video can provide useful semantic information and become a useful characteristic for many content-based image and video analysis tasks such as content-based image search, video information retrieval, digitize scanned document. Text analysis and recognition includes several sub-problems such as text detection, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. Although many approaches have been proposed, text detection in scene images (different from digital born one such as embedding text in images) is an open and challenging problem which has been receiving attentions. This is a difficult task due to high variation of scene text such as luminance, contrast, blur, distortion as well as variation of font type and size. Competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008 and ICDAR 2013). The leading approach of Task 2.1 (Text Localization in scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013} which poses significant challenges to state-of-the-art methods today. Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
+\par
+Texture-based methods \cite{Chen.2004.CVPR}  use a sliding windows to look for all possible texts in the image. It bases on hypotheses that text regions in images have distinct textural properties from non-text regions (gradient distribution, texture and structure) that can be identified with a learning machine technique. This approach may become costly in computation because they require calculation of features which describe texts properties of all possible sliding windows at different scale. These approach are also be limited by the learning data base which the learning machine uses. \fxnote{add more paper of this type}
+\par
+The connected-components (CCs) methods \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami} group pixels, which have similar properties such as color, gray level or geometrical arrangement of edges, into connected regions. Detecting texts regardless image properties such as scales, orientation and font type is the advantage of this approach. It also provide a segmentation that can be useful in the OCR step .In the other hand, it might produce high amount of false positives. The CCs obtained may be filtered using texture properties to remove CCs that cannot be characters before grouping into words to reduce false positives rate.
+\par
+The hybrid methods combine both approaches. Pan et al. \cite{Pan2009} uses HOG features and a Waldboost cascade classifier to generate a text confidence map, based on which connected-components extraction is done by a local binarization. Liu et al \cite{Liu.2006.CRA}, performs on color image, is also a hybrid approach since it use an edge on 3 channel to separate connected components. These candidates will be verified using Harr wavelet transform as texture characterization.
+\par
+A typical text retrieval process includes 3 steps:
+\begin{itemize}\item
+Character retrieval: First, Text candidates must be highlighted and distinct from background. These candidate obtained by segmentation or by a characterization process, depends on the approach used (texture or CCs).
+\item
+Local classification: These candidates may be filtered out to remove non-text regions.
+\item
+Word grouping: Finally, character candidates will be grouped in to complete words. 
+\end{itemize}
+\paragraph{To be continued...}

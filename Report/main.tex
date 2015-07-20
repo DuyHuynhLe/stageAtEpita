@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{import}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+%caption and reference
+\usepackage{caption}\usepackage{subcaption}
+\usepackage{hyperref}
+%defaut image path
+\graphicspath{ {image/} }
+%fixme note
+\usepackage[nomargin,inline,marginclue,draft]{fixme}
+
+%line spacing and first paragraph indent
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\setlength{\parskip}{1em}
+\usepackage{indentfirst}
+
+\author{HUYNH Le Duy}
+
+\begin{document}
+
+\tableofcontents
+\listoffigures
+\import{1chapterIntroduction/}{chapterIntroduction}
+\import{2chapterStateOfArt/}{chapterStateOfArt}
+\import{3chapterTheory/}{chapterTheory}
+\import{4chapterOurApproach/}{ourApproach}
+\import{5chapterImplementation/}{ourApproach}
+\bibliographystyle{plain}
+\bibliography{Reference/bibli}
+
+\end{document}
+
+
+
