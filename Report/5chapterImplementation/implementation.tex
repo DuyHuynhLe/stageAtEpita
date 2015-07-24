@@ -2,11 +2,14 @@
 \graphicspath{ {5chapterImplementation/image/} }
 \chapter{Implementation}
 
-This chapter will clarify the implementation of the approach present in \autoref{Approach}.
+This chapter will clarify the implementation of the approach present in \autoref{Approach}. 
+First of all, the color input images will be transformed into gray level image using its luminance information. Most digital images using the RGB (or sRGB) which use the ITU-R BT.709 primaries which defined the coefficients to calculate the relative luminace from linear RGB components: $Y = 0.2126R + 0.7152G + 0.0722B$. The formula reflects the spectral sensitivity of human visual perception of brightness: green light contributes the most to the intensity perceived by humans, and blue light the least.
+\par The morphological Laplacian and gradient is calculated using a relatively large size structuring element to reduce influences of small components which is 
 
 \section{Well-composed Interpolation}
 
-about the well composed implementation by median, multiple by 2, the important of sign
+about the well composed implementation by median, multiple by 2, the important of sign.
+
 
 \section{Objects labeling}
 

@@ -7,13 +7,72 @@
 %------------------------------------------------------------
 Morphology come from Greek and means the "study of shape". Mathematical Morphology (MM) deals with describing shapes based on the set theory, integral geometry and lattice algebra. It is not just a theory but is now part of classical powerful image processing techniques. In the field of document image processing and analysis, in which the shape of objects contains prominent features, some morphological operators are regularly used. Mathematical morphology contains non-linear operator that can transform the shape of objects, thus allowing to extract them. Morphological operators can be classified as follow:
 \begin{enumerate}
-\item \textbf{Operators of binary images based on structuring element}. These operators describe the interaction of an image with a structuring element S. A binary image $1_F$: $ D \rightarrow \mathbb{B} $ is the indicator function of a set of point F which is a subset of and Euclidean space $ \mathbb{R}^d $ or the integer grid $\mathbb{Z}^d$ of dimension d. A structuring element is a set \textit{S}, usually centered in a limited definition domain. It acts like a filter for any transform applying to \textit{F}. The size of S, usually small relative to the images, affects the strength of the transform and its sharp defines how the transform modify the shape of components in image. Many morphological operators has been defined, some of them are dual by set complementation. Two famous morphology operators, erosion and dilation, belong to this class. Erosion is defined as $ \epsilon_S (F) = \lbrace p  \vert  \forall s \in S, p + s \in F\rbrace $  and dilation is defined as $ \delta_S (F) = \lbrace p+s  \vert  \forall p \in F, s \in S\rbrace $ Their effects can be seen in \fxnote{add image}. They are dual operators with respect to complementation $ \epsilon_S (F) = \mathcal{C} {\delta_{S}\mathcal{C}F} $ . This duality property illustrates the fact that erosion and dilation do not process the objects and their background symmetrically: the erosion shrinks the objects but expands their background (and vice versa for the dilation).
+\item \textbf{Operators of binary images based on structuring element}. These operators describe the interaction of an image with a structuring element S. A binary image $1_F$: $ D \rightarrow \mathbb{B} $ is the indicator function of a set of point F which is a subset of and Euclidean space $ \mathbb{R}^d $ or the integer grid $\mathbb{Z}^d$ of dimension d. A structuring element is a set \textit{S}, usually centered in a limited definition domain. It acts like a filter for any transform applying to \textit{F}. The size of S, usually small relative to the images, affects the strength of the transform and its sharp defines how the transform modify the shape of components in image. Many morphological operators has been defined, some of them are dual by set complementation. Two famous morphology operators, erosion and dilation, belong to this class. Erosion is defined as $ \epsilon_S (F) = \lbrace p  \vert  \forall s \in S, p + s \in F\rbrace $  and dilation is defined as $ \delta_S (F) = \lbrace p+s  \vert  \forall p \in F, s \in S\rbrace $ Their effects can be seen in \ref{fig:erosionbin} and \ref{fig:dilationbin}. They are dual operators with respect to complementation $ \epsilon_S (F) = \mathcal{C} {\delta_{S}\mathcal{C}F} $ . This duality property illustrates the fact that erosion and dilation do not process the objects and their background symmetrically: the erosion shrinks the objects but expands their background (and vice versa for the dilation).
+\par Other interesting morphological filters can be formed using the differences of two or more operators, for example the morphological gradient and morphological Laplacian. As the erosion shrinks objects and the dilation grows them, examining the difference between original image and its erosion and dilation can gave us information of the edge of objects. The morphological gradient defined by $\triangledown_S (F) = \delta_S (F) - \epsilon_S (F) $. This thick gradient appears on two sides of the acture edges and can be decomposed into two half gradient $\triangledown_S (F) = \triangledown_S ^- (F) + \triangledown_S ^+ (F)$ with $ \triangledown_S ^- (F) = F - \epsilon_S (F)$ is the inner gradient adheres to insides of objects and $ \triangledown_S ^+ (F) =\delta_S (F) - F$ is the outer gradient, adheres to the outside of objects. The morphological equivalent of the Laplacian is defined by $\vartriangle_S (F) =\triangledown_S ^+ (F) - \triangledown_S ^- (F)=\delta_S (F)+\epsilon_S (F) - 2F$. There effects are shown in \ref{fig:gradientbin}, \ref{fig:gradientInbin}, \ref{fig:gradientOutbin} and \ref{fig:laplacianbin}
+
+\begin{figure}
+	\begin{subfigure}{0.2\textwidth}
+	 	\includegraphics{bin/input.png} \caption{Input F}\label{fig:inputbin} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+	 	\includegraphics{bin/erosion.png} \caption{$ \epsilon_S (F)$}\label{fig:erosionbin} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\includegraphics{bin/dilation.png} \caption{$ \delta_S (F)$}\label{fig:dilationbin} \end{subfigure}
+	\centering
+		
+	\begin{subfigure}{0.2\textwidth}
+		\includegraphics{bin/gradient.png} 
+		\caption{$ \triangledown_S (F)$}\label{fig:gradientbin} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\includegraphics{bin/gradientIn.png} 
+		\caption{$ \triangledown_S ^- (F)$}\label{fig:gradientInbin} \end{subfigure}		
+	\begin{subfigure}{0.2\textwidth}	
+		\includegraphics{bin/gradientOut.png} 
+		\caption{$ \triangledown_S ^+ (F)$}\label{fig:gradientOutbin} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}	
+		\includegraphics{bin/laplacian.png} 
+		\caption{$\vartriangle_S (F)$}\label{fig:laplacianbin} \end{subfigure}					
+	\centering
+	\caption[Example of \textit{morphological operations}] {Binary Morphological Operations. The morphological Laplacian is colorized by Green (positive), red (negative) and black (zero) }
+	\label{fig:binOperations}
+\end{figure}
+
+
 \item \textbf{Elementary operators of binary images  on sets}. By replacing the structuring element B by the notion of neighborhood $\mathcal{N}$, morphological operators obtained will have elementary behavior (the slightest transform effect possible). For example, $ \delta_\mathcal{N} (F) = \lbrace p' \in \mathcal{N}(p) \cup p  \vert  p \in F \rbrace $ is the elementary dilation.
-\item \textbf{Extension from sets to functions} of the first two categories. Applying threshold decomposition principle, morphological operators can be extended to function i.e gray level images. $ f: \mathcal{D} \rightarrow \mathbb{N}$. With a gray level t given, the subset of $ \mathcal{D} $ obtained by shareholding f by t is denoted by $[f \geq t] = \lbrace p \in \mathcal{D} \vert f(p) \geq t \rbrace $. Any morphological set operator $\phi^{set}$ can be extended to define a morphological operator on gray level function $\phi$ using $ \phi(f)(p) = max \lbrace t \vert p \in \phi^{set}([f \geq t]) \rbrace $
+
+\item \textbf{Extension from sets to functions} of the first two categories. Applying threshold decomposition principle, morphological operators can be extended to function i.e gray level images. $ f: \mathcal{D} \rightarrow \mathbb{N}$. With a gray level t given, the subset of $ \mathcal{D} $ obtained by shareholding f by t is denoted by $[f \geq t] = \lbrace p \in \mathcal{D} \vert f(p) \geq t \rbrace $. Any morphological set operator $\phi^{set}$ can be extended to define a morphological operator on gray level function $\phi$ using $ \phi(f)(p) = max \lbrace t \vert p \in \phi^{set}([f \geq t]) \rbrace $. There effect can be seen in \ref{fig:grayLevelOperations}.
+
+\begin{figure}
+	\begin{subfigure}{0.2\textwidth}
+	 	\includegraphics{grayLevel/input.png} \caption{Input F}\label{fig:inputgrayLevel} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+	 	\includegraphics{grayLevel/erosion.png} \caption{$ \epsilon_S (F)$}\label{fig:erosiongrayLevel} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\includegraphics{grayLevel/dilation.png} \caption{$ \delta_S (F)$}\label{fig:dilationgrayLevel} \end{subfigure}
+	\centering
+		
+	\begin{subfigure}{0.2\textwidth}
+		\includegraphics{grayLevel/gradient.png} 
+		\caption{$ \triangledown_S (F)$}\label{fig:gradientgrayLevel} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}
+		\includegraphics{grayLevel/gradientIn.png} 
+		\caption{$ \triangledown_S ^- (F)$}\label{fig:gradientIngrayLevel} \end{subfigure}		
+	\begin{subfigure}{0.2\textwidth}	
+		\includegraphics{grayLevel/gradientOut.png} 
+		\caption{$ \triangledown_S ^+ (F)$}\label{fig:gradientOutgrayLevel} \end{subfigure}
+	\begin{subfigure}{0.2\textwidth}	
+		\includegraphics{grayLevel/laplacian.png} 
+		\caption{$\vartriangle_S (F)$}\label{fig:laplaciangrayLevel} \end{subfigure}					
+	\centering
+	\caption[Example of \textit{morphological operations}] {Morphological Operations on set, using a square 10x10 pixels as the structuring element. (The laplacian is colorized by Green (positive), red (negative) and black (zero)) }
+	\label{fig:grayLevelOperations}
+\end{figure}
+
+
 \item \textbf{Connected operators}. Connected operators \cite{Salembier95flatzones} are operator that work by merging elementary region called flat zones. It verify 
 $ \forall p, \forall p' \in \mathcal{N}(p), f(p')=f(p) \Longrightarrow  \phi(f)(p')=\phi(f)(p)$. As a consequence, connecting operators cannot create new contours, nor modify their position. Therefore, they have a very good contour preservation properties. There are two commonly used classes of connected operators: filters by reconstruction and algebraic openings and closings \cite{Vincent.1993.tip}. Although they are well-know in the binary case, where only objects "marked" by another image are extracted, they can be defined for gray level images by shareholding the input image at different level t. \fxnote{example} 
 \end{enumerate}
 \par Mathematical Morphology is a powerful tool for image processing. It found application in numerous field: geoscience and remote sensing, materials science, biological and medical imaging, industrial applications, identification and security control, document processing and image coding \cite{Soille:2003:MIA:773286}.
+
 
 \section{Digital Topology and Self-Duality}
 

@@ -2,16 +2,16 @@
 \graphicspath{ {4chapterOurApproach/image/} }
 \chapter{Approach} \label{Approach}
 \section{The simple morphological tree-based framework for image representation}
-\paragraph{}
+\par
 The morphological tree can be use to represent the image contents. Using the information carried by that tree, we can keep only interesting elements such as text. To compute a representation tree, mathematical morphology requires at first an order function of pixel values. In the case of color images, since there is not a natural order of color, the definition of is important and affect the performance. A classical workaround is to sort using their luminance by converting color image to gray-level image. 
-\paragraph{}
+\par
 A first possible approach is to compute the tree of shapes of the luminance, since a visible text must have a “dark over bright” contrast or the opposite one. Each note of this tree is a zone which have similar value.
-\paragraph{}
+\par
 A second possible approach base on the Laplacian morphology on the gray-level image. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. By using laplacian morphology, we can distinguish object from the background. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box = \delta_\Box + \varepsilon_\Box -2id $ as defined in \cite{Vliet_anedge}. The structure of the tree of shapes of the Laplacian is:
 \begin{itemize}
 \item A zone negative or positive will form a note
 \item A zero point included in another note will belongs to that note
 \item A note included in another note is a descendant of the former note
 \end{itemize}
-\paragraph{}
+\par
 The tree of shapes of the Laplacian representation of region having similar luminance and their inclusion relationship. This tree is a light tree-base representation and well-suitable for some application such as image simplification [<give an example>] or smart binarization. 

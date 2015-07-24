@@ -10,7 +10,7 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \bibliographystyle{ieeetran}
-
+\usepackage[nodayofweek,level]{datetime}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
 
@@ -35,7 +35,9 @@
 
 \author{HUYNH Le Duy} % Your name
 
-\date{\normalsize\today} % Today's date or a custom date
+\newcommand{\mydate}{\formatdate{15}{4}{2015}}
+\selectlanguage{francais}
+\date{\normalsize \mydate} % Today's date or a custom date
 
 \begin{document}
 
