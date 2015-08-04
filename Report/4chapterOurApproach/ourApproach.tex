@@ -1,17 +1,87 @@
-
+   
 \graphicspath{ {4chapterOurApproach/image/} }
 \chapter{Approach} \label{Approach}
-\section{The simple morphological tree-based framework for image representation}
+\section{Hypothesis}
 \par
-The morphological tree can be use to represent the image contents. Using the information carried by that tree, we can keep only interesting elements such as text. To compute a representation tree, mathematical morphology requires at first an order function of pixel values. In the case of color images, since there is not a natural order of color, the definition of is important and affect the performance. A classical workaround is to sort using their luminance by converting color image to gray-level image. 
+Although affected by many factors as presented in \autoref{State-of-Art}, a readable scene text must at least contrast to their background as well as forming a homogeneous region in term of luminous or colors. Generally, characters of the same word will be in the same background. Despite variation of font and size and background, they also have relatively the same size. These text must also be have a large enough size, if not even the human eye can not recognize them, nor the OCR. Our approach will use these hypothesis to narrow down to the candidates obtained.
+\section{The Tree of Shapes of the Laplacian}
 \par
-A first possible approach is to compute the tree of shapes of the luminance, since a visible text must have a “dark over bright” contrast or the opposite one. Each note of this tree is a zone which have similar value.
+Based on these hypothesis, region which is contrast to their background make a good candidate to be text. Many authors worked with the same hypothesis, using MSER \cite{Neumann12} \cite{xucheng.2013.pami} \cite{Shi_2013:_MSER} or edges detectors \cite{Liu.2006.CRA} \cite{Yan:2011:Nerocomputing} to extract components. For this task, we found that the Laplacian is excellent for extracting components having different contrast as the sign of Laplacian output already provides us an segmentation of the image. More over, the Laplacian treats the dark over light and light over dark in the same way which allow us to apply the method only once. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. In reconstructing a tree from these components by their inclusion, the background - objects relations shown are useful for characters grouping and elimination of false positive characters detected.
 \par
-A second possible approach base on the Laplacian morphology on the gray-level image. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. By using laplacian morphology, we can distinguish object from the background. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box = \delta_\Box + \varepsilon_\Box -2id $ as defined in \cite{Vliet_anedge}. The structure of the tree of shapes of the Laplacian is:
+To compute a representation tree, mathematical morphology requires at first an order function of pixel values. In the case of color images, since there is not a natural order of color, the definition of is important and affect the performance. A classical workaround is to sort using their luminance by converting color image to gray-level image. 
+\par
+Our approach base on the Laplacian morphology on the gray-level image. By using laplacian morphology, we can distinguish objects through the contour detected. A transition between positive - negative zone and vice versa mark a contour. Pixels having same sign belong to same region. Null pixels corespondent to homogeneous regions and therefore belong to the region they are included in. To maintain the duality, null pixels on the zeros crossing will belongs to the outer region. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box (f) = \delta_\Box + \varepsilon_\Box -2f $ as defined in \cite{Vliet_anedge}. As the sign of Laplacian carries the information needed so the structure of the tree of shapes of the Laplacian (ToSoL) is:
 \begin{itemize}
-\item A zone negative or positive will form a note
-\item A zero point included in another note will belongs to that note
-\item A note included in another note is a descendant of the former note
+\item A zone negative or positive will form a node.
+\item The root node is either positive or negative, defined by the median of pixels on the bother.
+\item A zero point included in another node will belongs to that node.
+\item A note included in another node is a descendant of the former node.
 \end{itemize}
 \par
-The tree of shapes of the Laplacian representation of region having similar luminance and their inclusion relationship. This tree is a light tree-base representation and well-suitable for some application such as image simplification [<give an example>] or smart binarization. 
+The ToSoL is the representation of region having similar luminance and their inclusion relationship. This structure is more compact than the tree of shape presented in \cite{geraud.13.ismm} because the information require to compute is simpler (sign of Laplacian instead of the value of each pixel). Thus, we can present the tree as a table of parents instead an image of same size as the original image. \fxnote{treat back on white and white on black}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{2in}
+		\centering
+	 	\includegraphics[width=2.5cm]{tos/tree.png} \caption{Original image}\label{fig:tosOri} \end{subfigure}   
+	\begin{subfigure}[t]{2in}
+		\centering
+	 	\includegraphics[width=2.5cm]{tos/lap2.png} \caption{Laplacian red is negative green is posifive and blue is zero}\label{fig:tosLap} \end{subfigure}   
+	\begin{subfigure}[t]{2in}
+		\centering
+		\includegraphics[width=2.5cm]{tos/lab2n.png} \caption{segmentation resultat}\label{fig:tosLab} \end{subfigure}
+	\centering
+		
+	\begin{subfigure}[t]{2in}
+		\centering
+		\includegraphics[width=5cm]{tos/parent.png} 
+		\caption{The Tree will be present as a table}\label{fig:tosParent} \end{subfigure}					
+	\centering
+	\caption[Example of \textit{Tree of Shape of Laplacian}] {Example of Tree of Shape of Laplacian in segmentation of images.  }
+	\label{fig:binOperations}
+\end{figure}
+
+\par That ToSoL will be pruned using different condition in order to eliminate components which is impossible to be character. The hierarchical structure also allows us to group candidate in the same back ground (having same parent).
+
+\par The propose approach will follow this procedure: First, the input image will be convert in to gray level image. Then the morphological Laplacian will be calculated. The morphological gradient will also be calculate to determine if a zero-crossing of Laplacian is strong enough to be kept. The well-composed interpolation will be applied on these results. After that, a tree of shape will be calculated from the well-composed interpolated Laplacian: each node will be labeled with a same value, the parent relation will be given by a table of parent which shows us the parent of each label. Not all zeros crossing will be the beginning of a new node, new node only be started if the average gradient on the outer contour is stronger than a threshold. Then, components which have possible shape and similar size will be grouped together to form word candidates which will remove stand alone candidate which is rarely a case of a text. A bounding box will be calculated for each word candidate. The false positives will be eliminated during the procedures en pruning the tree by shape, size, how strong the region is in term of Laplacian...
+
+\begin{figure}
+ \begin{center}
+  \begin{tikzpicture}[node distance=2 cm, auto, >=stealth]
+   % nodes
+   \node[cloud] (a) 				
+   				{Input};
+ 				
+   \node[block,text width=5em] (b)  [right of=a, node distance=3cm]	
+   				{gray-level images};
+   \node[block, text width=8em] (c)  [right of=b, node distance=4cm]   
+   				{Calculate gray morphological laplacian and gradient};
+
+   \node[block, text width=8em] (d)  [right of=c, node distance=4.5cm]                       
+   				{Labeling composant and form the parent table};
+   \node[block,text width=5em] (e)  [below of=d, node distance=3cm]                       
+   				{Tree prunning};
+   \node[block] (f)  [left of=e, node distance=4cm]
+                {Component grouping};
+   \node[block] (g)  [left of=f, node distance=5cm]
+                {Bounding box calculation}; 
+   \node[cloud] (h)  [left of=g, node distance=4cm]
+                {output};                               
+                   				
+
+   % edges
+   \draw[->] (a) -- (b);
+   \draw[->] (b) -- (c);
+   \draw[->] (c) -- (d);
+   \draw[->] (d) -- (e);
+   \draw[->] (e) -- (f);
+   \draw[->] (f) -- (g);
+   \draw[->] (g) -- (h);
+  \end{tikzpicture}
+  \caption{The processing chain of our approach}
+  \label{Process}
+ \end{center}
+\end{figure}
+
+\paragraph{seem fine}

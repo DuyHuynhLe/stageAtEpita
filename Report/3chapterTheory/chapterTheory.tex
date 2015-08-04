@@ -71,12 +71,12 @@ Morphology come from Greek and means the "study of shape". Mathematical Morpholo
 \item \textbf{Connected operators}. Connected operators \cite{Salembier95flatzones} are operator that work by merging elementary region called flat zones. It verify 
 $ \forall p, \forall p' \in \mathcal{N}(p), f(p')=f(p) \Longrightarrow  \phi(f)(p')=\phi(f)(p)$. As a consequence, connecting operators cannot create new contours, nor modify their position. Therefore, they have a very good contour preservation properties. There are two commonly used classes of connected operators: filters by reconstruction and algebraic openings and closings \cite{Vincent.1993.tip}. Although they are well-know in the binary case, where only objects "marked" by another image are extracted, they can be defined for gray level images by shareholding the input image at different level t. \fxnote{example} 
 \end{enumerate}
-\par Mathematical Morphology is a powerful tool for image processing. It found application in numerous field: geoscience and remote sensing, materials science, biological and medical imaging, industrial applications, identification and security control, document processing and image coding \cite{Soille:2003:MIA:773286}.
+\par Mathematical Morphology is a powerful tool for image processing. It found application in numerous field: geoscience and remote sensing, materials science, biological and medical imaging, industrial applications, identification and security control, document processing and image coding \cite{Soille:2003:MIA:773286}. 
 
 
 \section{Digital Topology and Self-Duality}
 
-A self-dual operator processes the image contents regardless its contrast \cite{Geraud.15.ismm}. In general, operators that are not self-dual do not treat bright objects over dark background and dark objects over bright background similarly which is often an undesirable feature. It is most important when no assumption about the contrast between object and background can be made. As any part of the images could be the subject, we want an operation which behavior the same way regardless the contrast between the subject and its background to obtain a unique representation.  
+A self-dual operator processes the image contents regardless its contrast \cite{geraud.15.ismm}. In general, operators that are not self-dual do not treat bright objects over dark background and dark objects over bright background similarly which is often an undesirable feature. It is most important when no assumption about the contrast between object and background can be made. As any part of the images could be the subject, we want an operation which behavior the same way regardless the contrast between the subject and its background to obtain a unique representation.  
 \begin{figure}
 
 	\begin{subfigure}{0.3\textwidth}
@@ -100,7 +100,7 @@ For a image defined in the regular cubical grid, the digital topology must be de
 
 \section{Well-composed Images}
 \par
-As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{C}$ are weakly well-composed. It can also be defined using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is weakly well-composed if these configuration do not appear.
+As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{C}$ are weakly well-composed. It can easily be defined using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is weakly well-composed if these configuration do not appear.
 \par
 The notion of well-composednessed has also been extended to gray-level images. A gray-level image $\mu$ is well-composed if any set $[\mu \geq \lambda ]$ is well-composed. The extended version of "critical configuration" is that every block 
 \begin{tabular}{|c|c|}
@@ -112,8 +112,8 @@ c & b \\
 \end{tabular} 
 must verify interval(a,b) $\cap$ interval(c,d) $\neq \varnothing$ , where interval(a,b) = [min(a,b),max(a,b)].
 \par
-An image is not a priori well-composed. There are 2 approach to get a well-composed image from the original image \cite{Geraud.15.ismm} by changing it pixel value (with possibility of alter the image's topology) or by a well-composed interpolation.
-
+An image is not a priori well-composed. There are 2 approach to get a well-composed image from the original image \cite{geraud.15.ismm} by changing it pixel value (with possibility of alter the image's topology) or by a well-composed interpolation.
+\fxnote{attribute, important why we have to interpolate}
 
 
 \section{Connected filter}
