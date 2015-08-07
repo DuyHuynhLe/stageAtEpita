@@ -3,7 +3,7 @@
 \chapter{Approach} \label{Approach}
 \section{Hypothesis}
 \par
-Although affected by many factors as presented in \autoref{State-of-Art}, a readable scene text must at least contrast to their background as well as forming a homogeneous region in term of luminous or colors. Generally, characters of the same word will be in the same background. Despite variation of font and size and background, they also have relatively the same size. These text must also be have a large enough size, if not even the human eye can not recognize them, nor the OCR. Our approach will use these hypothesis to narrow down to the candidates obtained.
+Although affected by many factors as presented in \ref{Approach}-of-Art}, a readable scene text must at least contrast to their background as well as forming a homogeneous region in term of luminous or colors. Generally, characters of the same word will be in the same background. Despite variation of font and size and background, they also have relatively the same size. These text must also be have a large enough size, if not even the human eye can not recognize them, nor the OCR. Our approach will use these hypothesis to narrow down to the candidates obtained.
 \section{The Tree of Shapes of the Laplacian}
 \par
 Based on these hypothesis, region which is contrast to their background make a good candidate to be text. Many authors worked with the same hypothesis, using MSER \cite{Neumann12} \cite{xucheng.2013.pami} \cite{Shi_2013:_MSER} or edges detectors \cite{Liu.2006.CRA} \cite{Yan:2011:Nerocomputing} to extract components. For this task, we found that the Laplacian is excellent for extracting components having different contrast as the sign of Laplacian output already provides us an segmentation of the image. More over, the Laplacian treats the dark over light and light over dark in the same way which allow us to apply the method only once. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. In reconstructing a tree from these components by their inclusion, the background - objects relations shown are useful for characters grouping and elimination of false positive characters detected.
@@ -39,7 +39,7 @@ The ToSoL is the representation of region having similar luminance and their inc
 		\caption{The Tree will be present as a table}\label{fig:tosParent} \end{subfigure}					
 	\centering
 	\caption[Example of \textit{Tree of Shape of Laplacian}] {Example of Tree of Shape of Laplacian in segmentation of images.  }
-	\label{fig:binOperations}
+	\label{fig:ToS}
 \end{figure}
 
 \par That ToSoL will be pruned using different condition in order to eliminate components which is impossible to be character. The hierarchical structure also allows us to group candidate in the same back ground (having same parent).
