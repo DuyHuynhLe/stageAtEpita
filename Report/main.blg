@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/dev/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+Database file #1: Reference/bibli.bib
+Warning--empty journal in Campos.2010.CVPR
+Warning--empty journal in Kong:1989:DTI:71397.71400
+You've used 23 entries,
+            2118 wiz_defined-function locations,
+            725 strings with 9710 characters,
+and the built_in function-call counts, 9375 in all, are:
+= -- 917
+> -- 442
+< -- 13
++ -- 172
+- -- 147
+* -- 706
+:= -- 1481
+add.period$ -- 71
+call.type$ -- 23
+change.case$ -- 139
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 350
+empty$ -- 725
+format.name$ -- 147
+if$ -- 2014
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 23
+newline$ -- 118
+num.names$ -- 50
+pop$ -- 145
+preamble$ -- 1
+purify$ -- 116
+quote$ -- 0
+skip$ -- 271
+stack$ -- 0
+substring$ -- 672
+swap$ -- 107
+text.length$ -- 13
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 90
+warning$ -- 2
+while$ -- 86
+width$ -- 25
+write$ -- 261
+(There were 2 warnings)

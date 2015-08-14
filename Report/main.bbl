@@ -1,0 +1,146 @@
+\begin{thebibliography}{10}
+
+\bibitem{berger.07.icip}
+Christophe Berger, Thierry G\'eraud, Roland Levillain, Nicolas Widynski,
+  Anthony Baillard, and Emmanuel Bertin.
+\newblock Effective component tree computation with application to pattern
+  recognition in astronomical imaging.
+\newblock In {\em Proceedings of the IEEE International Conference on Image
+  Processing (ICIP)}, volume~4, pages 41--44, San Antonio, TX, USA, September
+  2007.
+
+\bibitem{Campos.2010.CVPR}
+Teófilo E.~De Campos, Bodla~Rakesh Babu, and Manik Varma.
+\newblock Character recognition in natural images.
+\newblock 2010.
+
+\bibitem{Chen.2004.CVPR}
+Xiangrong Chen and A.L. Yuille.
+\newblock Detecting and reading text in natural scenes.
+\newblock In {\em Proceedings of the 2004 IEEE Computer Society Conference on
+  Computer Vision and Pattern Recognition}, volume~2, pages II--366--II--373
+  Vol.2, June 2004.
+
+\bibitem{Epshtein.2010.CVPR}
+B.~Epshtein, E.~Ofek, and Y.~Wexler.
+\newblock Detecting text in natural scenes with stroke width transform.
+\newblock In {\em IEEE Conference on Computer Vision and Pattern Recognition
+  (CVPR)}, pages 2963--2970, June 2010.
+
+\bibitem{geraud.15.ismm}
+Thierry G\'eraud, Edwin Carlinet, and S\'ebastien Crozet.
+\newblock Self-duality and digital topology: Links between the morphological
+  tree of shapes and well-composed gray-level images.
+\newblock In J.A. Benediktsson, J.~Chanussot, L.~Najman, and H.~Talbot,
+  editors, {\em Mathematical Morphology and Its Application to Signal and Image
+  Processing -- Proceedings of the 12th International Symposium on Mathematical
+  Morphology (ISMM)}, volume 9082 of {\em Lecture Notes in Computer Science
+  Series}, pages 573--584, Reykjavik, Iceland, 2015. Springer.
+
+\bibitem{geraud.13.ismm}
+Thierry G\'eraud, Edwin Carlinet, S\'ebastien Crozet, and Laurent Najman.
+\newblock A quasi-linear algorithm to compute the tree of shapes of {$n$-D}
+  images.
+\newblock In C.L.~Luengo Hendriks, G.~Borgefors, and R.~Strand, editors, {\em
+  Mathematical Morphology and Its Application to Signal and Image Processing --
+  Proceedings of the 11th International Symposium on Mathematical Morphology
+  (ISMM)}, volume 7883 of {\em Lecture Notes in Computer Science Series}, pages
+  98--110, Uppsala, Sweden, 2013. Springer.
+
+\bibitem{ICDAR.2013}
+D.~Karatzas, F.~Shafait, S.~Uchida, M.~Iwamura, L.~Gomez~i Bigorda,
+  S.~Robles~Mestre, J.~Mas, D.~Fernandez~Mota, J.~Almazan~Almazan, and L.-P.
+  de~las Heras.
+\newblock Icdar 2013 robust reading competition.
+\newblock In {\em Document Analysis and Recognition (ICDAR), 2013 12th
+  International Conference on}, pages 1484--1493, Aug 2013.
+
+\bibitem{Kong:1989:DTI:71397.71400}
+T.~Y. Kong and A.~Rosenfeld.
+\newblock Digital topology: Introduction and survey.
+\newblock 37:357--393, Dec. 1989.
+
+\bibitem{Latecki95}
+Longin Latecki, Ulrich Eckhardt, and Azriel Rosenfeld.
+\newblock Well-composed sets.
+\newblock {\em Computer Vision and Image Understanding}, 61:70--83, 1995.
+
+\bibitem{Latecki.98.JMIV}
+LonginJan Latecki, Christopher Conrad, and Ari Gross.
+\newblock Preserving topology by a digitization process.
+\newblock {\em Journal of Mathematical Imaging and Vision}, 8(2):131--159,
+  1998.
+
+\bibitem{Liu.2006.CRA}
+Yangxing Liu, Satoshi Goto, and Takeshi Ikenaga.
+\newblock A contour-based robust algorithm for text detection in color images.
+\newblock {\em IEICE - Trans. Inf. Syst.}, E89-D(3):1221--1230, March 2006.
+
+\bibitem{Monasse.2000}
+P.~Monasse and F.~Guichard.
+\newblock Fast computation of a contrast-invariant image representation.
+\newblock {\em IEEE Transactions on Image Processing}, 9(5):860--872, May 2000.
+
+\bibitem{Neumann12}
+Lukas Neumann and Jiri Matas.
+\newblock Real-time scene text localization and recognition.
+\newblock In {\em Proc. CVPR}, pages 3538--3545, 2012.
+\newblock calculate running time.
+
+\bibitem{Pan2009}
+Yi-Feng Pan, Xinwen Hou, and Cheng-Lin Liu.
+\newblock Text localization in natural scene images based on conditional random
+  field.
+\newblock In {\em Proc. ICDAR}, pages 6--10, 2009.
+
+\bibitem{Salembier95flatzones}
+P.~Salembier and J.~Serra.
+\newblock Flat zones filtering, connected operators, and filters by
+  reconstruction.
+\newblock {\em IEEE Transactions on Image Processing}, 4:1153--1160, 1995.
+
+\bibitem{Salembier2009}
+P.~Salembier and M.H.F. Wilkinson.
+\newblock Connected operators.
+\newblock {\em Signal Processing Magazine, IEEE}, 26(6):136--157, November
+  2009.
+
+\bibitem{Serra1993}
+Jean~C. Serra and Philippe Salembier.
+\newblock Connected operators and pyramids.
+\newblock {\em Proc. SPIE}, pages 65--76, 1993.
+
+\bibitem{Shi_2013:_MSER}
+Cunzhao Shi, Chunheng Wang, Baihua Xiao, Yang Zhang, and Song Gao.
+\newblock Scene text detection using graph model built upon maximally stable
+  extremal regions.
+\newblock {\em Pattern Recognition Letters}, 34(2):107--116, January 2013.
+
+\bibitem{Soille:2003:MIA:773286}
+Pierre Soille.
+\newblock {\em Morphological Image Analysis: Principles and Applications}.
+\newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2 edition, 2003.
+
+\bibitem{Vincent.1993.tip}
+L.~Vincent.
+\newblock Morphological grayscale reconstruction in image analysis:
+  applications and efficient algorithms.
+\newblock {\em IEEE Transactions on Image Processing}, 2(2):176--201, Apr 1993.
+
+\bibitem{Vliet_anedge}
+Lucas J.~Van Vliet, Ian~T. Young, and Guus~L. Beckers.
+\newblock An edge detection model based on non-linear laplace filtering, 1988.
+
+\bibitem{xucheng.2013.pami}
+Kaizhu~Huang Xu-Cheng~Yin, Xuwang~Yin and Hong-Wei Hao.
+\newblock Robust text detection in natural scene images.
+\newblock {\em Pattern Analysis and Machine Intelligence}, 36(5):970--983,
+  2013.
+
+\bibitem{Yan:2011:Nerocomputing}
+Jianqiang Yan, Jie Li, and Xinbo Gao.
+\newblock Chinese text location under complex background using gabor filter and
+  svm.
+\newblock {\em Neurocomputing}, 74(17):2998--3008, October 2011.
+
+\end{thebibliography}
