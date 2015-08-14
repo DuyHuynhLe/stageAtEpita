@@ -3,7 +3,22 @@
 \chapter{Approach} \label{Approach}
 \section{Hypothesis}
 \par
-Although affected by many factors as presented in \ref{Approach}-of-Art}, a readable scene text must at least contrast to their background as well as forming a homogeneous region in term of luminous or colors. Generally, characters of the same word will be in the same background. Despite variation of font and size and background, they also have relatively the same size. These text must also be have a large enough size, if not even the human eye can not recognize them, nor the OCR. Our approach will use these hypothesis to narrow down to the candidates obtained.
+Texts included in images contain a rich information source. They are difficult to be detected due to many factors as presented in \ref{State-of-Art} as their various sizes, luminance, complex milieu but interesting text can be narrow down by some criteria:
+\begin{enumerate}
+\item {\textbf{Size:}}
+\par
+Text can appear in variety of sizes in images. But interesting text should be readable and therefore there should be a minimal size of text. Esually, the larger font size, the more important is the text. Text which is very small cannot be recognized easily by OCR engines, nor human eyes anyway. However, a upper bound on character sizes is uninvited.
+\item {\textbf{Color and Intensity:}}
+\par
+A readable scene text must at least contrast to their background. Each character tends to have a perceptually uniform color and intensity. Generally, characters of the same word will be in the same background.
+\item {\textbf{Alignment and inter-character distance:}}
+\par
+Generally, important text in images appear mainly in horizontal direction. Scene text direction may suffer by different distortions that changes alignment but they are generally in a near horizontal direction. 
+\par
+Characters in the same word should have small variation in height. The uniform distance between characters in the same word are not grantee due to distortions but the inter-character can be limited by a function of its height and width. 
+\end{enumerate}
+\par
+Many author working with CCs approach used a verify step by a learning machine. This is not really interesting as non-text component can lately rejected by an OCR engine. We try to increase the recall rate at the cost of the precision rate.
 \section{The Tree of Shapes of the Laplacian}
 \par
 Based on these hypothesis, region which is contrast to their background make a good candidate to be text. Many authors worked with the same hypothesis, using MSER \cite{Neumann12} \cite{xucheng.2013.pami} \cite{Shi_2013:_MSER} or edges detectors \cite{Liu.2006.CRA} \cite{Yan:2011:Nerocomputing} to extract components. For this task, we found that the Laplacian is excellent for extracting components having different contrast as the sign of Laplacian output already provides us an segmentation of the image. More over, the Laplacian treats the dark over light and light over dark in the same way which allow us to apply the method only once. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. In reconstructing a tree from these components by their inclusion, the background - objects relations shown are useful for characters grouping and elimination of false positive characters detected.

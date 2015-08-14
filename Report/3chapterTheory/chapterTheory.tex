@@ -71,10 +71,19 @@ Morphology come from Greek and means the "study of shape". Mathematical Morpholo
 \item \textbf{Connected operators}. Connected operators \cite{Salembier95flatzones} are operator that work by merging elementary region called flat zones. It verify 
 $ \forall p, \forall p' \in \mathcal{N}(p), f(p')=f(p) \Longrightarrow  \phi(f)(p')=\phi(f)(p)$. As a consequence, connecting operators cannot create new contours, nor modify their position. Therefore, they have a very good contour preservation properties. There are two commonly used classes of connected operators: filters by reconstruction and algebraic openings and closings \cite{Vincent.1993.tip}. Although they are well-know in the binary case, where only objects "marked" by another image are extracted, they can be defined for gray level images by shareholding the input image at different level t. \fxnote{example} 
 \end{enumerate}
-\par Mathematical Morphology is a powerful tool for image processing. It found application in numerous field: geoscience and remote sensing, materials science, biological and medical imaging, industrial applications, identification and security control, document processing and image coding \cite{Soille:2003:MIA:773286}. 
+\par Mathematical morphology is a powerful tool for image processing. It found application in numerous field: geoscience and remote sensing, materials science, biological and medical imaging, industrial applications, identification and security control, document processing and image coding \cite{Soille:2003:MIA:773286}. These tools provide a strong impression, especially class of morphological operations that do not alter the contours of objects 
 
-
-\section{Digital Topology and Self-Duality}
+\section{Digital topology and Self-Duality}
+\subsection{Basic notions of digital topology}
+\par
+A 2D discrete image I is a function $ \mathbb{Z}^2 \rightarrow E$ with E is a set. I is a digital binary image when $E = {0,1}$ and it is said a gray scale image when $E = {0, \dots, k}$. A point of I is a couple $p = (x,y) \in \mathbb{Z}^2$. Two point $p_1 =(x_1,y_1),p_2=(x_2,y_2)$ are:
+\begin{itemize}
+\item 4-adjacent if and only if $d_4 (p_1,p_2) =\vert x_1 - x_2 \vert + \vert y_1 - y_2 \vert = 1 $
+\item 8-adjacent if and only if $d_8 (p_1,p_2) =max (\vert x_1 - x_2 \vert , \vert y_1 - y_2 \vert) = 1 $
+\end{itemize}
+\par
+The n-neighborhood $N_n (p)$ of a point p is the set of all the points n-adjacent to p, with n = 4 or n = 8. \fxnote{continue}
+\subsection{Self-Duality}
 \par 
 In the case of text detection in gray scale image, a well known problem encountered is to treat bright texts over dark background and dark texts over bright background. Common workaround which processes both the original and it complement will increase computation cost. Consequently, we interest in the class of self-dual operator.
 \par
@@ -95,15 +104,15 @@ A self-dual operator processes the image contents regardless its contrast \cite{
 \par
 As we can seen in \ref{fig:motheAndBaby}, where green and red respectively represent the background and foreground. From the grayscale image \ref{fig:gray} If we focus in the mother, then the outer zone will be the background as in \ref{fig:mother}. Furthermore, we can chose the baby as the subject and therefore, the woman will become the background \ref{fig:baby}.	
 \par
-For a image defined in the regular cubical grid, the digital topology must be describe by a "Jordan pair" of connectivity $(c_\alpha,c_\beta)$ \cite{Kong:1989:DTI:71397.71400}. One connectivity is used for the object and the other one for the background. 
+One of the major draw backs of digital topology is the connectivity paradox. As said in \cite{Kong:1989:DTI:71397.71400}, if the same connectivity is used for both the object and background, the Jordan curve theorem is not respected. In order to solve this problem, a pair of connectivity is used. 
+For a image defined in the regular cubical grid, the digital topology must be describe by a "Jordan pair" of connectivity $(c_\alpha,c_\beta)$ . One connectivity is used for the dark pixels and the other one for the bright pixels. 
 \fxnote{connectivity image}
 \par 
-For example, if the image \ref{fig:topo} is describe by the pair $(c_4,c_8)$ (the 4-connectivity for bright pixel and 8-connectivity for dark pixel) we will obtain 1 object. On the same image, using $(c_8,c_4)$ will gave us 2 separate object. This arbitrary choice affect the topology and self-dual operation must use different connectivity for the complementary to work in the same way. It is demonstrated in \ref{fig:topoa} \ref{fig:topoc}: the complement image must use the $(c_8,c_4)$ connectivity to gave the same presentation of the original image which use $(c_4,c_8)$. This lead to the study of an image class which enjoys very useful topological and geometric properties: the well-composed images
+For example, if the image \ref{fig:topo} is describe by the pair $(c_4,c_8)$ (the 4-connectivity for bright pixels and 8-connectivity for dark pixels) we will obtain 1 object. On the same image, using $(c_8,c_4)$ will gave us 2 separate objects. This arbitrary choice affect the topology. In effect, self-dual operation must use different connectivity for the complementary to work in the same way as demonstrated in \ref{fig:topoa} \ref{fig:topoc}: the complement image must use the $(c_8,c_4)$ connectivity to gave the same presentation of the original image which use $(c_4,c_8)$. As no assumption is made about the gray level of background and object, the choice of connectivity pair is better avoided. Another approach draws our attention to : the well-composed images. Latecki et al. \cite{Latecki95} present this image class which enjoys very useful topological and geometric properties, especially the fact that there is only one connectivity relation on points of the image.
 
 \section{Well-composed Images}
-\fxnote{about well-composed images}
 \par
-As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{C}$ are weakly well-composed. It can easily be defined using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is weakly well-composed if these configuration do not appear.
+As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{S}$ are weakly well-composed. It can easily be defined using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is weakly well-composed if these configuration do not appear. 
 \par
 The notion of well-composednessed has also been extended to gray-level images. A gray-level image $\mu$ is well-composed if any set $[\mu \geq \lambda ]$ is well-composed. The extended version of "critical configuration" is that every block 
 \begin{tabular}{|c|c|}
@@ -115,8 +124,8 @@ c & b \\
 \end{tabular} 
 must verify interval(a,b) $\cap$ interval(c,d) $\neq \varnothing$ , where interval(a,b) = [min(a,b),max(a,b)].
 \par
-An image is not a priori well-composed. There are 2 approach to get a well-composed image from the original image \cite{geraud.15.ismm} by changing it pixel value (with possibility of alter the image's topology) or by a well-composed interpolation.
-\fxnote{attribute, important why we have to interpolate}
+Latecki has shown in \cite{Latecki.98.JMIV} that a topology preserved digitization process must results in a well-composed image. An image is not $a priori$ well-composed but its attribute has motivated de development of algorithms to make an image well-composed. There are currently 2 approach to get a well-composed image from the original image: by changing it pixel value (with the possibility of alter the image's topology) or by a well-composed interpolation.
+
 
 
 \section{Connected filter}
