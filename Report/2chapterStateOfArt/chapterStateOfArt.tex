@@ -1,7 +1,12 @@
 
 \graphicspath{ {1chapterStateOfArt/image/} }
-\chapter{Background and State-of-Art} \label{State-of-Art}
+\chapter{State-of-Art} \label{State-of-Art}
+\section{Background}
 
+To fully understand the value of text detection and recognition approaches, this section provides information about the problems, application and challenges.
+\subsection{Text in images}
+Text in images can be divided into 2 classes: scene text and  born-digital text. Scene text refers to text which is captured in its environment such as sign, advertising, clothing. Born-digital text include text in born-digital images or graphically added into an images which can be found on captions, subtitles and notation in video and born-digital images on webs and email \cite{Karatzas.2011.ICDAR}.
+\subsection{Application}
 \par
 Text in images and video contains valuable information. Text appearing in images and video can provide useful semantic information and become a useful characteristic for many content-based image and video analysis tasks such as content-based image search, multimedia retrieval, visual input and access, and industrial automation.
 
@@ -19,9 +24,33 @@ As signs, banner, advertise, product labels carry significant information, autom
 
 Text recognition on packages, letters, containers, houses, signs and maps relates to industrial automation. A mail sorting system will benefit addresses recognition. Logistics efficiency will be improved by automatic identification of container numbers \cite{39}.
 
-
 \end{itemize}
 
+\subsection{Challenges}
+\begin{center} \label{Chalenges}
+\begin{tabular}{|l|l|}
+\hline 
+\textbf{Category} &\textbf{Challenges} \\ 
+\hline 
+Environment &Uneven illumination \\ 
+	\cline{2-2} 
+ 	&Scene complexity \\ 
+\hline 
+Acquisition &Blurring/degradation \\ 
+	\cline{2-2} 
+	 &Perspective distortion \\ 
+\hline 
+Text content &Aspect ratio variation \\ 
+	\cline{2-2} 
+ 	&Variation of orientation and curved text \\ 
+	\cline{2-2}  
+	 &Variation of fonts \\ 
+	\cline{2-2} 
+ 	&Multilingual\\ 
+\hline 
+\end{tabular} 
+\end{center}
+\section{Approaches}
 Text analysis and recognition includes several sub-problems such as text detection, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. Although many approaches have been proposed, text detection in scene images (different from digital born one such as embedding text in images) is an open and challenging problem which has been receiving attentions. This is a difficult task due to high variation of scene text such as luminance, contrast, blur, distortion as well as variation of font type and size. Competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008 and ICDAR 2013). The leading approach of Task 2.1 (Text Localization in scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013} which poses significant challenges to state-of-the-art methods today. Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
 \fxnote{focused text and incidental text}
 \par
