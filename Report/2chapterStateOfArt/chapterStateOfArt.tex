@@ -27,6 +27,9 @@ Text recognition on packages, letters, containers, houses, signs and maps relate
 \end{itemize}
 
 \subsection{Challenges}
+
+Although many approaches have been proposed, and many advance has been made on text detection on digital born images, text detection in scene images is an open and challenging problem which has been receiving attentions. This is a difficult task due to high variation of scene text such as illumination, contrast, blur, distortion as well as variation of text content \cite{Liang.2005.IJDAR} which are summarized in Table \ref{Chalenges} .
+
 \begin{center} \label{Chalenges}
 \begin{tabular}{|l|l|}
 \hline 
@@ -36,13 +39,15 @@ Environment &Uneven illumination \\
 	\cline{2-2} 
  	&Scene complexity \\ 
 \hline 
-Acquisition &Blurring/degradation \\ 
-	\cline{2-2} 
-	 &Perspective distortion \\ 
+Acquisition &Optical aberration \\ 
+ 	\cline{2-2} 
+	 &Resolution \\  	
+ 	\cline{2-2} 
+	 &Noise \\ 	 
+ 	\cline{2-2} 
+	 &Compression \\ 	 
 \hline 
-Text content &Aspect ratio variation \\ 
-	\cline{2-2} 
- 	&Variation of orientation and curved text \\ 
+Text content &Variation of orientation and curved text \\ 
 	\cline{2-2}  
 	 &Variation of fonts \\ 
 	\cline{2-2} 
@@ -50,8 +55,31 @@ Text content &Aspect ratio variation \\
 \hline 
 \end{tabular} 
 \end{center}
-\section{Approaches}
-Text analysis and recognition includes several sub-problems such as text detection, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. Although many approaches have been proposed, text detection in scene images (different from digital born one such as embedding text in images) is an open and challenging problem which has been receiving attentions. This is a difficult task due to high variation of scene text such as luminance, contrast, blur, distortion as well as variation of font type and size. Competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008 and ICDAR 2013). The leading approach of Task 2.1 (Text Localization in scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013} which poses significant challenges to state-of-the-art methods today. Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
+
+\begin{itemize}
+\item{\textbf{Scene complexity:}} Man made objects in real life could have similar shape and presentation to text. Background complexity degrades the ability to discriminate text from non-text. \fxnote {re-read}
+
+\item{\textbf{Uneven illumination:}} Images captures in natural environment are not always in good illumination conditions. They suffer color distortions, degradation of visual feature which reduce the precision and make the segmentation and recognition task become difficult.
+
+\item{\textbf{Optical aberration: }} Most of photos are not taken with an ideals lenses so optical aberrations appears. Perspective distortion occurs when the sensor plane and the text plane are not parallel. Other distortions appear such as barrel, pincushion and mustache distortion due to quality of lenses that can deform text sharp. Defocus occurs because focus can not be always maintain in normal working condition and in some application such as visual aide for visually impaired. At flexible working condition and focus-free camera, defocusing and blurring of text occur. A moving object or a moving camera can also create motion blur, which are often met in case of video. Chromatic and coma aberration introduces false colors and reduces edges contrast. These optical aberration make characters lost theirs sharp and their edges responses reduced. As sharp edges response is required for character segmentation and recognition, blurring effect cause serious problem to the system \cite{Liang.2005.IJDAR}.
+
+\item{\textbf{Resolution:}} Images taken by cameras usually has low resolution that makes detection and segmentation difficult. While most OCR engines are tuned to resolution between 150 and 400 dpi, text in a video frame may be at or below 50 dpi \cite{Liang.2005.IJDAR}.
+
+\item{\textbf{Noise: }} Noise cause by sensor degrade the quality of images. It cause by a shutter speed, sensor size and temperature. The lower shutter speed, the smaller sensor size and higher temperature, the greater the noise. 
+
+\item{\textbf{Compression: }} Most images captured by cameras are compressed as a raw image will cost much more storage space. The compression process is not optimized for document analysis but for general uses which does not always preserve the topology and sharpness.
+
+\item{\textbf{Variation of fonts: }} Italic and script fonts may have overlap characters make it difficult to recognize and segment \cite{Liu.2011.ICDAR}. Variation of fonts introduce large within class variations which may challenge approaches which use verification step base on machine learning.
+
+\item{\textbf{Multilingual: }} Languages use the Latin alphabet have around tens characters but other language such as Chinese, Japanese and Korean has thousands of characters. Other language has characters shape connected or changed such as Arabic and Hindu. OCR in scanned multilingual documents remains a research problem \cite{Smith.2009.IWMO} and it is much more difficult in case of scene image.
+
+\end{itemize}
+
+\section{Existing approaches}
+Text analysis and recognition includes several sub-problems such as text detection, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. It is an open field and competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008, ICDAR 2013 and ICDAR 2015). Text detection in scene images  poses significant challenges to state-of-the-art methods today. The leading approach of Task 2.1 (Text Localization in text-focused scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013}. 
+
+
+Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
 \fxnote{focused text and incidental text}
 \par
 Texture-based methods \cite{Chen.2004.CVPR} use a sliding windows to look for all possible texts in the image. It bases on hypotheses that text regions in images have distinct textural properties from non-text regions (gradient distribution, texture and structure) that can be identified with a learning machine technique. This approach may become costly in computation because they require calculation of features which describe texts properties of all possible sliding windows at different scale. These approach are also be limited by the learning data base which the learning machine uses. \fxnote{add more paper of this type}
