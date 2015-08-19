@@ -75,28 +75,32 @@ Text content &Variation of orientation and curved text \\
 
 \end{itemize}
 
-\section{Existing approaches}
-Text analysis and recognition includes several sub-problems such as text detection, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. It is an open field and competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008, ICDAR 2013 and ICDAR 2015). Text detection in scene images  poses significant challenges to state-of-the-art methods today. The leading approach of Task 2.1 (Text Localization in text-focused scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013}. 
+\section{Existing approaches on scene text localization}
+Text analysis and recognition includes several sub-problems such as text localization, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. It is an open field and competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008, ICDAR 2013 and the upcoming ICDAR 2015). Text detection in scene images  poses significant challenges to state-of-the-art methods today. The leading approach of Task 2.1 (Text Localization in text-focused scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013}. 
 
 
-Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
+The main objective of text localization is to localize text components and group them into word candidate. These methods assume that text region can be regard as kind of uniform pattern. In consequence, there are properties or feature that are invariant over this pattern such as color, edges, strokes width and texture. Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
 \fxnote{focused text and incidental text}
+\subsection{Methods}
 \par
-Texture-based methods \cite{Chen.2004.CVPR} use a sliding windows to look for all possible texts in the image. It bases on hypotheses that text regions in images have distinct textural properties from non-text regions (gradient distribution, texture and structure) that can be identified with a learning machine technique. This approach may become costly in computation because they require calculation of features which describe texts properties of all possible sliding windows at different scale. These approach are also be limited by the learning data base which the learning machine uses. \fxnote{add more paper of this type}
+Texture-based methods \cite{Chen.2004.CVPR} \cite{Lee.2011.ICDAR} \cite{wang.2011.iccv} \cite{Coates.2011.ICDAR} \cite{Wang.2012.ICPR} use a sliding windows to look for all possible texts in the image. It bases on hypotheses that text regions in images have distinct textural properties from non-text regions (gradient distribution, texture and structure) that can be identified with a classifier such as Adaboost \cite{Lee.2011.ICDAR}, Random Ferns \cite{wang.2011.iccv}, linear SVM \cite{Coates.2011.ICDAR} or convolution neural network \cite{Wang.2012.ICPR}. This approach may become expensive in computation when uses complex classification methods and large number of windows at different scale needed to be analyzed. These approach are also be limited by the learning data base which the learning machine uses and its sensitive to text alignment orientation \cite{Pan.2011.TIP}. 
 \par
-The connected-components (CCs) methods \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami} group pixels, which have similar properties such as color, gray level or geometrical arrangement of edges, into connected regions. Detecting texts regardless image properties such as scales, orientation and font type is the advantage of this approach. It also provide a segmentation that can be useful in the OCR step .In the other hand, it might produce high amount of false positives. The CCs obtained may be filtered using texture properties to remove CCs that cannot be characters before grouping into words to reduce false positives rate.
+The connected-components (CCs) methods \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami} \cite{Lee.2010.ICPR} group pixels, which have similar properties such as color, luminance or geometrical arrangement of edges, into connected regions. These methods often run an operation which segment . Detecting texts regardless image properties such as scales, orientation and font type is the advantage of this approach. It also provides a segmentation that can be useful in the OCR step. In the other hand, it might produce high amount of false positives. The CCs obtained sometimes are filtered using texture properties to remove CCs that cannot be characters before grouping into words to reduce false positives rate.
 \par
-The hybrid methods combine both approaches. Pan et al. \cite{Pan2009} uses HOG features and a Waldboost cascade classifier to generate a text confidence map, based on which connected-components extraction is done by a local binarization. Liu et al \cite{Liu.2006.CRA}, performs on color image, is also a hybrid approach since it use an edge on 3 channel to separate connected components. These candidates will be verified using Harr wavelet transform as texture characterization.
-\par
-A typical text retrieval process includes 3 steps:
-\begin{itemize}\item
-Character retrieval: First, Text candidates must be highlighted and distinct from background. These candidate obtained by segmentation or by a characterization process, depends on the approach used (texture or CCs).
-\item
-Local classification: These candidates may be filtered out to remove non-text regions.
-\item
-Word grouping: Finally, character candidates will be grouped in to complete words. 
-\end{itemize}
-\par 
-We aim to make a reliable and fast text detectors, which can run on real time application such as detecting text in video. Many approaches \fxnote{cite} tried to detect all the texts candidates as possible then use a machine learning to remove the false positive before continue. This seams to be a redundant as the final purpose of text detection is to pass them into an OCR for recognition. This OCR will surely capable of verify if a candidate is truly a text.
+The hybrid methods combine both approaches. Pan et al. \cite{Pan2009} uses HOG features and a Waldboost cascade classifier to generate a text confidence map, based on which connected-components extraction is done by a local binarization. Liu et al \cite{Liu.2006.CRA} is also a hybrid approach since it use an edge detector on 3 channel to separate connected components which will be verified using Harr wavelet transform as texture characterization.
+
+\subsection{Features}
+
+%\par
+%A typical text retrieval process includes 3 steps:
+%\begin{itemize}\item
+%Character retrieval: First, Text candidates must be highlighted and distinct from background. These candidate obtained by segmentation or by a characterization process, depends on the approach used (texture or CCs).
+%\item
+%Local classification: These candidates may be filtered out to remove non-text regions.
+%\item
+%Word grouping: Finally, character candidates will be grouped in to complete words. 
+%\end{itemize}
+%\par 
+%We aim to make a reliable and fast text detectors, which can run on real time application such as detecting text in video. Many approaches \fxnote{cite} tried to detect all the texts candidates as possible then use a machine learning to remove the false positive before continue. This seams to be a redundant as the final purpose of text detection is to pass them into an OCR for recognition. This OCR will surely capable of verify if a candidate is truly a text.
 \paragraph{To be continued...}
 \fxnote{authors use morphology}
