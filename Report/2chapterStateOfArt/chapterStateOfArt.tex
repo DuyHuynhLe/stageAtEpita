@@ -1,11 +1,26 @@
 
-\graphicspath{ {1chapterStateOfArt/image/} }
+2\graphicspath{ {2chapterStateOfArt/image/} }
 \chapter{State-of-Art} \label{State-of-Art}
 \section{Background}
 
 To fully understand the value of text detection and recognition approaches, this section provides information about the problems, application and challenges.
 \subsection{Text in images}
-Text in images can be divided into 2 classes: scene text and  born-digital text. Scene text refers to text which is captured in its environment such as sign, advertising, clothing. Born-digital text include text in born-digital images or graphically added into an images which can be found on captions, subtitles and notation in video and born-digital images on webs and email \cite{Karatzas.2011.ICDAR}.
+Text in images can be divided into 2 classes: scene text and  born-digital text. Scene text refers to text which is captured in its environment such as sign, advertising, clothing they were divided into focused text and incidental text in the ICDAR Robust reading competition. Born-digital text include text in born-digital images or graphically added into an images which can be found on captions, subtitles and notation in video and born-digital images on webs and email \cite{Karatzas.2011.ICDAR} such as.
+
+
+\begin{figure}
+
+	\begin{subfigure}[b]{0.3\textwidth}
+	 	\includegraphics[width=5cm]{img1.jpg} \caption{}\label{fig:focused} \end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=5cm]{img2.jpg} \caption{}\label{fig:incidental} \end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=5cm]{img3.jpg} \caption{}\label{fig:bornDigital} \end{subfigure}
+	\centering
+	\caption[Example of \textit{text}] {Example of focused scene text \ref{fig:focused} , incidental scene text \ref{fig:incidental} and born-digital text \ref{fig:bornDigital} }
+	\label{fig:example}
+\end{figure}
+
 \subsection{Application}
 \par
 Text in images and video contains valuable information. Text appearing in images and video can provide useful semantic information and become a useful characteristic for many content-based image and video analysis tasks such as content-based image search, multimedia retrieval, visual input and access, and industrial automation.
@@ -56,41 +71,66 @@ Text content &Variation of orientation and curved text \\
 \end{tabular} 
 \end{center}
 
-\begin{itemize}
-\item{\textbf{Scene complexity:}} Man made objects in real life could have similar shape and presentation to text. Background complexity degrades the ability to discriminate text from non-text. \fxnote {re-read}
 
-\item{\textbf{Uneven illumination:}} Images captures in natural environment are not always in good illumination conditions. They suffer color distortions, degradation of visual feature which reduce the precision and make the segmentation and recognition task become difficult.
+\textbf{Scene complexity:} Man made objects in real life could have similar shape and presentation to text. Background complexity degrades the ability to discriminate text from non-text. \fxnote {re-read}
 
-\item{\textbf{Optical aberration: }} Most of photos are not taken with an ideals lenses so optical aberrations appears. Perspective distortion occurs when the sensor plane and the text plane are not parallel. Other distortions appear such as barrel, pincushion and mustache distortion due to quality of lenses that can deform text sharp. Defocus occurs because focus can not be always maintain in normal working condition and in some application such as visual aide for visually impaired. At flexible working condition and focus-free camera, defocusing and blurring of text occur. A moving object or a moving camera can also create motion blur, which are often met in case of video. Chromatic and coma aberration introduces false colors and reduces edges contrast. These optical aberration make characters lost theirs sharp and their edges responses reduced. As sharp edges response is required for character segmentation and recognition, blurring effect cause serious problem to the system \cite{Liang.2005.IJDAR}.
+\textbf{Uneven illumination:} Images captures in natural environment are not always in good illumination conditions. They suffer color distortions, degradation of visual feature which reduce the precision and make the segmentation and recognition task become difficult.
 
-\item{\textbf{Resolution:}} Images taken by cameras usually has low resolution that makes detection and segmentation difficult. While most OCR engines are tuned to resolution between 150 and 400 dpi, text in a video frame may be at or below 50 dpi \cite{Liang.2005.IJDAR}.
+\textbf{Optical aberration: } Most of photos are not taken with an ideals lenses so optical aberrations appears. Perspective distortion occurs when the sensor plane and the text plane are not parallel. Other distortions appear such as barrel, pincushion and mustache distortion due to quality of lenses that can deform text sharp. Defocus occurs because focus can not be always maintain in normal working condition and in some application such as visual aide for visually impaired. At flexible working condition and focus-free camera, defocusing and blurring of text occur. A moving object or a moving camera can also create motion blur, which are often met in case of video. Chromatic and coma aberration introduces false colors and reduces edges contrast. These optical aberration make characters lost theirs sharp and their edges responses reduced. As sharp edges response is required for character segmentation and recognition, blurring effect cause serious problem to the system \cite{Liang.2005.IJDAR}.
 
-\item{\textbf{Noise: }} Noise cause by sensor degrade the quality of images. It cause by a shutter speed, sensor size and temperature. The lower shutter speed, the smaller sensor size and higher temperature, the greater the noise. 
+\textbf{Resolution:} Images taken by cameras usually has low resolution that makes detection and segmentation difficult. While most OCR engines are tuned to resolution between 150 and 400 dpi, text in a video frame may be at or below 50 dpi \cite{Liang.2005.IJDAR}.
 
-\item{\textbf{Compression: }} Most images captured by cameras are compressed as a raw image will cost much more storage space. The compression process is not optimized for document analysis but for general uses which does not always preserve the topology and sharpness.
+\textbf{Noise: } Noise cause by sensor degrade the quality of images. It cause by a shutter speed, sensor size and temperature. The lower shutter speed, the smaller sensor size and higher temperature, the greater the noise. 
 
-\item{\textbf{Variation of fonts: }} Italic and script fonts may have overlap characters make it difficult to recognize and segment \cite{Liu.2011.ICDAR}. Variation of fonts introduce large within class variations which may challenge approaches which use verification step base on machine learning.
+\textbf{Compression: } Most images captured by cameras are compressed as a raw image will cost much more storage space. The compression process is not optimized for document analysis but for general uses which does not always preserve the topology and sharpness.
 
-\item{\textbf{Multilingual: }} Languages use the Latin alphabet have around tens characters but other language such as Chinese, Japanese and Korean has thousands of characters. Other language has characters shape connected or changed such as Arabic and Hindu. OCR in scanned multilingual documents remains a research problem \cite{Smith.2009.IWMO} and it is much more difficult in case of scene image.
+\textbf{Variation of fonts: } Italic and script fonts may have overlap characters make it difficult to recognize and segment \cite{Liu.2011.ICDAR}. Variation of fonts introduce large within class variations which may challenge approaches which use verification step base on machine learning.
 
-\end{itemize}
+\textbf{Multilingual: } Languages use the Latin alphabet have around tens characters but other language such as Chinese, Japanese and Korean has thousands of characters. Other language has characters shape connected or changed such as Arabic and Hindu. OCR in scanned multilingual documents remains a research problem \cite{Smith.2009.IWMO} and it is much more difficult in case of scene image.
 
-\section{Existing approaches on scene text localization}
+
+\section{Existing approaches in scene text localization}
 Text analysis and recognition includes several sub-problems such as text localization, isolated character recognition, word recognition. They are researched individually (\cite{Campos.2010.CVPR} \cite{Chen.2004.CVPR} \cite{Liu.2006.CRA} \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami}) or jointly \cite{Neumann12}. In these problem, the text detection modules is the most important part since it is shown to be critically affect the performance of text in image retrieval algorithms \cite{Epshtein.2010.CVPR}. It is an open field and competitions has been held in order to evaluate state-of-art (Text Location Competition at ICDAR 2003, ICDAR 2005, ICDAR 2008, ICDAR 2013 and the upcoming ICDAR 2015). Text detection in scene images  poses significant challenges to state-of-the-art methods today. The leading approach of Task 2.1 (Text Localization in text-focused scene images) in ICDAR 2013 obtains a recall of 66.45\% and precision of 88.47\% \cite{ICDAR.2013}. 
 
 
 The main objective of text localization is to localize text components and group them into word candidate. These methods assume that text region can be regard as kind of uniform pattern. In consequence, there are properties or feature that are invariant over this pattern such as color, edges, strokes width and texture. Related works can be divided into 3 catalogs: texture-based, connected-components and hybrids methods. 
 \fxnote{focused text and incidental text}
 \subsection{Methods}
-\par
+
+
 Texture-based methods \cite{Chen.2004.CVPR} \cite{Lee.2011.ICDAR} \cite{wang.2011.iccv} \cite{Coates.2011.ICDAR} \cite{Wang.2012.ICPR} use a sliding windows to look for all possible texts in the image. It bases on hypotheses that text regions in images have distinct textural properties from non-text regions (gradient distribution, texture and structure) that can be identified with a classifier such as Adaboost \cite{Lee.2011.ICDAR}, Random Ferns \cite{wang.2011.iccv}, linear SVM \cite{Coates.2011.ICDAR} or convolution neural network \cite{Wang.2012.ICPR}. This approach may become expensive in computation when uses complex classification methods and large number of windows at different scale needed to be analyzed. These approach are also be limited by the learning data base which the learning machine uses and its sensitive to text alignment orientation \cite{Pan.2011.TIP}. 
-\par
-The connected-components (CCs) methods \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami} \cite{Lee.2010.ICPR} group pixels, which have similar properties such as color, luminance or geometrical arrangement of edges, into connected regions. These methods often run an operation which segment . Detecting texts regardless image properties such as scales, orientation and font type is the advantage of this approach. It also provides a segmentation that can be useful in the OCR step. In the other hand, it might produce high amount of false positives. The CCs obtained sometimes are filtered using texture properties to remove CCs that cannot be characters before grouping into words to reduce false positives rate.
-\par
+
+
+The connected-components (CCs) methods \cite{Epshtein.2010.CVPR} \cite{xucheng.2013.pami} \cite{Neumann.2011.ICDAR} \cite{Lee.2010.ICPR} group pixels, which have similar properties such as color, luminance or geometrical arrangement of edges, into connected regions. These methods often run an operation which segment . Detecting texts regardless image properties such as scales, orientation and font type is the advantage of this approach. It also provides a segmentation that can be useful in the OCR step. In the other hand, it might produce high amount of false positives. The CCs obtained sometimes are filtered using texture properties to remove CCs that cannot be characters before grouping into words to reduce false positives rate.
+
+
 The hybrid methods combine both approaches. Pan et al. \cite{Pan2009} uses HOG features and a Waldboost cascade classifier to generate a text confidence map, based on which connected-components extraction is done by a local binarization. Liu et al \cite{Liu.2006.CRA} is also a hybrid approach since it use an edge detector on 3 channel to separate connected components which will be verified using Harr wavelet transform as texture characterization.
 
 \subsection{Features}
-Different features was used to text localization include color \cite{yi.2012.TIP}, edge and gradient \cite{•}. New features such as stroke width \cite{Epshtein.2010.CVPR} \cite{Subramanian.2007.ICDAR}, point \cite{a}, region \cite{•} and character appearance \cite{•} has recently studied
+
+
+Different features was used to text localization include color from different color space \cite{yi.2012.TIP} \cite{Roubtsova.2012.SPIE}, edge and gradient \cite{39}. New features such as stroke width \cite{Subramanian.2007.ICDAR} \cite{Epshtein.2010.CVPR} , corner \cite{Zhao.2011.TIP}, extremals region \cite{Neumann.2011.ICDAR} \cite{xucheng.2013.pami} or character appearance \cite{Ye.2014.CBDAR} \cite{Yi.2013.CVIU} has recently studied.
+
+
+\textbf{Color:} A readable text must have consistent and distinguishable color which contrasts with its background \cite{Liang.2005.IJDAR}. Color is widely used as feature to localize text \cite{Jain.1998.ICPR} \cite{Wang.2003.PR} \cite{Lee.2010.ICPR} although it seems to be sensitive to uneven lighting, multi-color and complicate textured which weaken color feature.
+\cite{39} and later \cite{Nikolaou.2009.ISTI} simplify the color images by color reduction and then cluster and group connected components in to candidate. Some authors use different color space to extract and analysis color feature such as Hue-Saturation-Intensity (HSI) \cite{Garcia.2000.ICASSP}, HSI plus intensity gradient \cite{Neumann12} or Hue-Lightness-Saturation \cite{Karatzas.2004.ICPR}
+
+
+\textbf{Edge and gradient approach} assumes that text has strong edges against its background. Therefore edge detector and gradient map can be used to detect character candidate. Edge detector \cite{Ye.2003.ICICS} (Sobel) \cite{Pillai.2013.ICCPCT} \cite{Shiva.2008.ICPR} and gradient was used widely in connected component. Sometimes they was used as a feature in sliding windows approaches \cite{Chen.2004.CVPR} \cite{Hanif.2008.ICPR}.
+
+
+\textbf{Stroke width} from the assumption that text stroke should be does not vary much in a the same character, Epshtein et al \cite{Epshtein.2010.CVPR} propose the stroke width transform (SWT). The SWT return a map which shows for each pixel the stroke width of the stroke to which it is most likely belonged. Recently, Mosleh et al \cite{Mosleh.2012.BMVC} show that SWT could be improved by introducing a bandlet-based edge detector which enhance text edges and dismisses noisy and foliage edges.
+
+
+\textbf{Corner: } With assumption that dense presences of corner points in text region. \cite{Zhao.2011.TIP} \cite{huang.2010.ICPR} used Harris corners detector as feature and then detect candidate with connected component approach \cite{huang.2010.ICPR} or analysis with a Decision tree classifier.
+
+
+\textbf{Extremals region} has been widely explored in \cite{Neumann12} \cite{xucheng.2013.pami} \cite{Shi_2013:_MSER}. Using the same assumption of color approach that the contrast between text characters and background must be strong and text seems to form a homogeneous color regions. 
+
+
+\textbf{Character appearance and texture features: }
+
+
 %\par
 %A typical text retrieval process includes 3 steps:
 %\begin{itemize}\item
@@ -102,5 +142,4 @@ Different features was used to text localization include color \cite{yi.2012.TIP
 %\end{itemize}
 %\par 
 %We aim to make a reliable and fast text detectors, which can run on real time application such as detecting text in video. Many approaches \fxnote{cite} tried to detect all the texts candidates as possible then use a machine learning to remove the false positive before continue. This seams to be a redundant as the final purpose of text detection is to pass them into an OCR for recognition. This OCR will surely capable of verify if a candidate is truly a text.
-\paragraph{To be continued...}
-\fxnote{authors use morphology}
+
