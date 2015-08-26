@@ -107,23 +107,23 @@ As we can seen in \ref{fig:motheAndBaby}, where green and red respectively repre
 One of the major draw backs of digital topology is the connectivity paradox related to the discrete version of the Jordan theorem. As said in \cite{Kong:1989:DTI:71397.71400}, if the same connectivity is used for both the object and background, the Jordan curve theorem is not respected. In order to solve this problem, a pair of connectivity is used: for a image defined in the regular cubical grid, the digital topology must be describe by a "Jordan pair" of connectivity $(c_\alpha,c_\beta)$ . One connectivity is used for the dark pixels and the other one for the bright pixels. 
 \fxnote{connectivity image}
 \par 
-For example, if the image \ref{fig:topo} is describe by the pair $(c_4,c_8)$ (the 4-connectivity for background (bright pixels) and 8-connectivity for object (dark pixels)) we will obtain one object. On the same image, using $(c_8,c_4)$ will gave us two separate objects (\ref{fig:topob}. This arbitrary choice affect the topology. In effect, self-dual operation must use different connectivity for the complementary to work in the same way as demonstrated in \ref{fig:topoa} \ref{fig:topoc}: the complement image must use the $(c_8,c_4)$ connectivity to gave the same presentation of the original image which use $(c_4,c_8)$. As no assumption is made about the gray level of background and object, the choice of connectivity pair is better avoided. Another approach draws our attention to : the well-composed images. Latecki et al. \cite{Latecki95} present this image class which enjoys very useful topological and geometric properties, especially the fact that there is only one connectivity relation on points of the image.
+For example, if the image \ref{fig:topo} is describe by the pair $(c_4,c_8)$ (the 4-connectivity for background (bright pixels) and 8-connectivity for object (dark pixels)) we will obtain one object \ref{fig:topoa}. On the same image, using $(c_8,c_4)$ will gave us two separate objects (\ref{fig:topob}. This arbitrary choice affect the topology. In effect, self-dual operation must use different connectivity for the complementary to work in the same way as demonstrated in \ref{fig:topoa} \ref{fig:topoc}: the complement image must use the $(c_8,c_4)$ connectivity to gave the same presentation of the original image which use $(c_4,c_8)$. As no assumption is made about the gray level of background and object, the choice of connectivity pair is better avoided. Another approach draws our attention to : the well-composed images. Latecki et al. \cite{Latecki95} present this image class which enjoys very useful topological and geometric properties, especially the fact that there is only one connectivity relation on points of the image.
 
 \begin{figure}
 
 	\begin{subfigure}[b]{0.3\textwidth}
-	 	\includegraphics[width=5cm]{topo.jpg} \caption{}\label{fig:focused} \end{subfigure}
+	 	\includegraphics[width=5cm]{topo.png} \caption{}\label{fig:topo} \end{subfigure}
 	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=5cm]{topob.jpg} \caption{}\label{fig:incidental} \end{subfigure}
+		\includegraphics[width=5cm]{topoa.png} \caption{}\label{fig:topoa} \end{subfigure}	
+\centering		
 		
-		
 	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=5cm]{topoa.jpg} \caption{}\label{fig:bornDigital} \end{subfigure}
+		\includegraphics[width=5cm]{topob.png} \caption{}\label{fig:topob} \end{subfigure}
 	\begin{subfigure}[b]{0.3\textwidth}
-		\includegraphics[width=5cm]{topoc.jpg} \caption{}\label{fig:bornDigital} \end{subfigure}
+		\includegraphics[width=5cm]{topoc.png} \caption{}\label{fig:topoc} \end{subfigure}
 	\centering
-	\caption[Example of \textit{text}] {Example of focused scene text \ref{fig:focused} , incidental scene text \ref{fig:incidental} and born-digital text \ref{fig:bornDigital} }
-	\label{fig:example}
+	\caption[Example of "Jordan pair" of connectivity] {Example of "Jordan pair" of connectivity}
+	\label{fig:Jordanpair}
 \end{figure}
 
 

@@ -26,11 +26,12 @@ First of all, the color input images will be transformed into gray level image u
 
 \par
 As proved in \cite{geraud.15.ismm}, if added points is calculate by the median of points around them will leads to a self-dual plain map.
+\fxnote{interpolate process}
 
 
 \section{Objects labeling}
 
-\subsection{Labeling by front propagation}
+\subsection{Labeling by front propagation} \label{labeling}
 \par From the well-composed interposed laplacian, we will label all connected components by front propagation. A connected component contain a set of connected pixels that has same sign of Laplacian and zeros that included in that region. As the zeros on the contours is always include in the outer region, we treat connected component in a dual-way i.e this process applied to complement image will gives the same result. Thanks for the well-composed interpolation, we can use only one type of connectivity. We chose the the 4-connectivity to reduce number of neighbors needed to be checked . As there are only 2 type of component (positive and negative one), a region is always surrounded by one other region. With the labeled image, we will present the tree structure with a parent table which tell the parent of each label. The parent of the root will be itself.
 \par
 Because of large number of component extracted by the Laplacian, we will try to prune the tree at the same time of labeling. Whenever we found a new component, some criteria will be check first to decide if a new label will be spread or continue using the label of that component's parent. These criteria includes average gradient of points on the outer contour and the perimeter of that contour.  
@@ -39,6 +40,7 @@ The labeling algorithm is based on front propagation algorithm. At first, an all
 \par 
 As text must be large enough, if it is not, even the human eye can not recognize them, nor the OCR. Size of a component will be verified by its perimeter and bounding box size. A component is considered noteworthy if:
 \begin{itemize} 
+	\item $Average_Gradient_on_contour > 30$
 	\item $Bounding\_Box\_height >5 pixels $ and $Bounding\_Box\_width>5 pixels $
 	\item $\dfrac{Bounding\_Box\_height}{Bounding\_Box\_width} >5 $  
 	\item $\dfrac{Bounding\_Box\_width}{Bounding\_Box\_height} >10 $	
@@ -153,7 +155,7 @@ The algorithm will try to follow the component in clockwise direction so the obj
 \caption{Contour following process}
 \end{algorithm}
 
-\section{Component grouping and bounding box calculation}
+\section{Component grouping and bounding box calculation} \label{Grouping}
 \par
 All the component extracted by the Laplacian will be treated as a character candidate. Of cause they contain a lots of false positive. The labeling process has remove some small or  components .After having the tree structure, we will filtered out components which does not match these criteria:
 \begin{itemize} 
