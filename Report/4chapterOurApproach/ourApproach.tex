@@ -7,7 +7,7 @@ Texts included in images contain a rich information source. They are difficult t
 \begin{enumerate}
 \item {\textbf{Size:}}
 \par
-Text can appear in variety of sizes in images. But interesting text should be readable and therefore there should be a minimal size of text. Esually, the larger font size, the more important is the text. Text which is very small cannot be recognized easily by OCR engines, nor human eyes anyway. However, a upper bound on character sizes is uninvited.
+Text can appear in variety of sizes in images. But interesting text should be readable and therefore there should be a minimal size of text. Esually, the larger font size, the more important is the text. Text which is very small cannot be recognized easily by OCR engines, nor human eyes anyway. However, an upper bound on character sizes is uninvited.
 \item {\textbf{Color and Intensity:}}
 \par
 A readable scene text must at least contrast to their background. Each character tends to have a perceptually uniform color and intensity. Generally, characters of the same word will be in the same background.
@@ -21,11 +21,11 @@ Characters in the same word should have small variation in height. The uniform d
 Many author working with CCs approach used a verify step by a learning machine. This is not really interesting as non-text component can lately rejected by an OCR engine. We try to increase the recall rate at the cost of the precision rate.
 \section{The Tree of Shapes of the Laplacian}
 \par
-Based on these hypothesis, region which is contrast to their background make a good candidate to be text. Many authors worked with the same hypothesis, using MSER \cite{Neumann12} \cite{xucheng.2013.pami} \cite{Shi_2013:_MSER} or edges detectors \cite{Liu.2006.CRA} \cite{Yan:2011:Nerocomputing} to extract components. For this task, we found that the Laplacian is excellent for extracting components having different contrast as the sign of Laplacian output already provides us an segmentation of the image. More over, the Laplacian treats the dark over light and light over dark in the same way which allow us to apply the method only once. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. In reconstructing a tree from these components by their inclusion, the background - objects relations shown are useful for characters grouping and elimination of false positive characters detected.
+Based on these hypothesis, region which is contrast to their background make a good candidate to be text. Many authors worked with the same hypothesis, using MSER \cite{Neumann12} \cite{xucheng.2013.pami} \cite{Shi_2013:_MSER} or edges detectors \cite{Liu.2006.CRA} \cite{Yan:2011:Nerocomputing} to extract components. For this task, we found that the Laplacian is excellent for extracting components having different contrast as the sign of Laplacian output already provides us a segmentation of the image. More over, the Laplacian treats the dark over light and light over dark in the same way which allow us to apply the method only once. The zero-crossing of the laplacian are closed-contours and mark the boundary of object. In reconstructing a tree from these components by their inclusion, the background - objects relations shown are useful for characters grouping and elimination of false positive characters detected.
 \par
 To compute a representation tree, mathematical morphology requires at first an order function of pixel values. In the case of color images, since there is not a natural order of color, the definition of is important and affect the performance. A classical workaround is to sort using their luminance by converting color image to gray-level image. 
 \par
-Our approach base on the Laplacian morphology on the gray-level image. By using laplacian morphology, we can distinguish objects through the contour detected. A transition between positive - negative zone and vice versa mark a contour. Pixels having same sign belong to same region. Null pixels corespondent to homogeneous regions and therefore belong to the region they are included in. To maintain the duality, null pixels on the zeros crossing will belongs to the outer region. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculate by $ \Delta_\Box (f) = \delta_\Box + \varepsilon_\Box -2f $ as defined in \cite{Vliet_anedge}. As the sign of Laplacian carries the information needed so the structure of the tree of shapes of the Laplacian (ToSoL) is:
+Our approach base on the Laplacian morphology on the gray-level image. By using laplacian morphology, we can distinguish objects through the contour detected. A transition between positive - negative zone and vice versa mark a contour. Pixels having same sign belong to same region. Null pixels corespondent to homogeneous regions and therefore belong to the region they are included in. To maintain the duality, null pixels on the zeros crossing will belong to the outer region. The size of objects conserved is depend on the windows using. Remind that the Laplacian morphology is calculated by $ \Delta_\Box (f) = \delta_\Box + \varepsilon_\Box -2f $ as defined in \cite{Vliet_anedge}. As the sign of Laplacian carries the information needed so the structure of the tree of shapes of the Laplacian (ToSoL) is:
 \begin{itemize}
 \item A zone negative or positive will form a node.
 \item The root node is either positive or negative, defined by the median of pixels on the bother.
@@ -42,10 +42,10 @@ The ToSoL is the representation of region having similar luminance and their inc
 	 	\includegraphics[width=2.5cm]{tos/tree.png} \caption{Original image}\label{fig:tosOri} \end{subfigure}   
 	\begin{subfigure}[t]{2in}
 		\centering
-	 	\includegraphics[width=2.5cm]{tos/lap2.png} \caption{Laplacian red is negative green is posifive and blue is zero}\label{fig:tosLap} \end{subfigure}   
+	 	\includegraphics[width=2.5cm]{tos/lap2.png} \caption{Laplacian, red is negative, green is positive and blue is zero}\label{fig:tosLap} \end{subfigure}   
 	\begin{subfigure}[t]{2in}
 		\centering
-		\includegraphics[width=2.5cm]{tos/lab2n.png} \caption{segmentation resultat}\label{fig:tosLab} \end{subfigure}
+		\includegraphics[width=2.5cm]{tos/lab2n.png} \caption{segmentation result}\label{fig:tosLab} \end{subfigure}
 	\centering
 		
 	\begin{subfigure}[t]{2in}
@@ -59,7 +59,7 @@ The ToSoL is the representation of region having similar luminance and their inc
 
 \par That ToSoL will be pruned using different condition in order to eliminate components which is impossible to be character. The hierarchical structure also allows us to group candidate in the same back ground (having same parent).
 
-\par The propose approach will follow this procedure: First, the input image will be convert in to gray level image. Then the morphological Laplacian will be calculated. The morphological gradient will also be calculate to determine if a zero-crossing of Laplacian is strong enough to be kept. The well-composed interpolation will be applied on these results. After that, a tree of shape will be calculated from the well-composed interpolated Laplacian: each node will be labeled with a same value, the parent relation will be given by a table of parent which shows us the parent of each label. Not all zeros crossing will be the beginning of a new node, new node only be started if the average gradient on the outer contour is stronger than a threshold. Then, components which have possible shape and similar size will be grouped together to form word candidates which will remove stand alone candidate which is rarely a case of a text. A bounding box will be calculated for each word candidate. The false positives will be eliminated during the procedures en pruning the tree by shape, size, how strong the region is in term of Laplacian...
+\par The propose approach will follow this procedure: First, the input image will be converted in to gray level image. Then the morphological Laplacian will be calculated. The morphological gradient will also be calculated to determine if a zero-crossing of Laplacian is strong enough to be kept. The well-composed interpolation will be applied on these results. After that, a tree of shape will be calculated from the well-composed interpolated Laplacian: each node will be labeled with a same value, the parent relation will be given by a table of parent which shows us the parent of each label. Not all zeros crossing will be the beginning of a new node, new node only be started if the average gradient on the outer contour is stronger than a threshold. Then, components which have possible shape and similar size will be grouped together to form word candidates which will remove stand alone candidate which is rarely a case of a text. A bounding box will be calculated for each word candidate. The false positives will be eliminated during the procedures en pruning the tree by shape, size, how strong the region is in term of Laplacian...
 
 \begin{figure}
  \begin{center}
@@ -76,7 +76,7 @@ The ToSoL is the representation of region having similar luminance and their inc
    \node[block, text width=8em] (d)  [right of=c, node distance=4.5cm]                       
    				{Labeling composant and form the parent table};
    \node[block,text width=5em] (e)  [below of=d, node distance=3cm]                       
-   				{Tree prunning};
+   				{Tree pruning};
    \node[block] (f)  [left of=e, node distance=4cm]
                 {Component grouping};
    \node[block] (g)  [left of=f, node distance=5cm]

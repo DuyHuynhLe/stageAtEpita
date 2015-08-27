@@ -5,9 +5,9 @@
 This chapter will clarify the implementation of the approach present in \ref{Approach}. 
 \section{Gray-level conversion and well-composed interpolation}
 First of all, the color input images will be transformed into gray level image using its luminance information. Most digital images using the RGB (or sRGB) which use the ITU-R BT.709 primaries. The coefficients defined to calculate the relative luminace from linear RGB components is: $Y = 0.2126R + 0.7152G + 0.0722B$. The formula reflects the spectral sensitivity of human visual perception of brightness: green light contributes the most to the intensity perceived by humans, and blue light the least. Other steps will work on this image. 
-\par At first, morphological Laplacian is calculated using a relatively large size structuring element to reduce influences of small components. A morphological gradient will also be calculated to provide information for pruning the tree \textit{a priori}. These output images will be doubled the resolution using a well-composed Interpolation \fxnote{add more detail}
+\par At first, morphological Laplacian is calculated using a relatively large size structuring element to reduce influences of small components. A morphological gradient will also be calculated to provide information for pruning the tree \textit{a priori}. These output images will be doubled the resolution using a well-composed Interpolation.
 
-\par The topology of the output images are not well-composed and therefor does not provide the self-dual \fxnote{why we have to interpolate}. Our method will double the resolution of the image by a well-composed interpolation. This interpolation will add temporary points:
+\par The topology of the output images are not well-composed and therefor does not provide the self-dual and other topology benefits as said in section \ref{Wellcomposed}. Our method will double the resolution of the image by a well-composed interpolation. This interpolation will add temporary points as in \ref{WllCmpInterpolation} :
 \par
 \begin{table}
 	\centering
@@ -21,22 +21,22 @@ First of all, the color input images will be transformed into gray level image u
 	\hline 
 
 	\end{tabular}
-	\caption{Well-composed interpolation} 
+	\caption{Well-composed interpolation} \label{WllCmpInterpolation}
 \end{table}
 
 \par
-As proved in \cite{geraud.15.ismm}, if added points is calculate by the median of points around them will leads to a self-dual plain map.
+As proved in \cite{geraud.15.ismm}, if added points is calculated by the median of points around them will lead to a self-dual plain map.
 \fxnote{interpolate process}
 
 
 \section{Objects labeling}
 
 \subsection{Labeling by front propagation} \label{labeling}
-\par From the well-composed interposed laplacian, we will label all connected components by front propagation. A connected component contain a set of connected pixels that has same sign of Laplacian and zeros that included in that region. As the zeros on the contours is always include in the outer region, we treat connected component in a dual-way i.e this process applied to complement image will gives the same result. Thanks for the well-composed interpolation, we can use only one type of connectivity. We chose the the 4-connectivity to reduce number of neighbors needed to be checked . As there are only 2 type of component (positive and negative one), a region is always surrounded by one other region. With the labeled image, we will present the tree structure with a parent table which tell the parent of each label. The parent of the root will be itself.
+\par From the well-composed interposed laplacian, we will label all connected components by front propagation. A connected component contain a set of connected pixels that has same sign of Laplacian and zeros that included in that region. As the zeros on the contours is always include in the outer region, we treat connected component in a dual-way i.e this process applied to complement image will give the same result. Thanks for the well-composed interpolation, we can use only one type of connectivity. We chose 4-connectivity to reduce number of neighbors needed to be checked . As there are only 2 type of component (positive and negative one), a region is always surrounded by one other region. With the labeled image, we will present the tree structure with a parent table which tell the parent of each label. The parent of the root will be itself.
 \par
 Because of large number of component extracted by the Laplacian, we will try to prune the tree at the same time of labeling. Whenever we found a new component, some criteria will be check first to decide if a new label will be spread or continue using the label of that component's parent. These criteria includes average gradient of points on the outer contour and the perimeter of that contour.  
 \par
-The labeling algorithm is based on front propagation algorithm. At first, an all zeros images is create with the same size like the interpolated Laplacian. Then the output images is read from left to right, top to bottom. When we read point which is not labeled (i.e maintain the null value), a new component is detected and a label will be propagate from that point until all connected points which have same laplacian sign are labeled. If it is not the first point (root component), we will follow points on its boundary to calculate the average gradient and perimeter of this contour and decide if a new label will be use. This contour following algorithm will be presented in \ref{subsec:ContourFollowing}. If the component is small or its gradient is week, we will use its parent's label to mark this component. The label will be propagated in checking its 4 neighbors. If a neighbor is inside the image, still not labeled and having same sign of the region, it will be labeled and the label will continue propagate from that point. The sign agreement can be checked simply by a xor operation between sign of region and sign of that point on the Laplacian. During the labeling process, other information can also be gather such as the bounding box, area, average gray level of each component. 
+The labeling algorithm is based on front propagation algorithm. At first, an all zeros images is create with the same size like the interpolated Laplacian. Then the output images is read from left to right, top to bottom. When we read point which is not labeled (i.e maintain the null value), a new component is detected and a label will be propagate from that point until all connected points which have same laplacian sign are labeled. If it is not the first point (root component), we will follow points on its boundary to calculate the average gradient and perimeter of this contour and decide if a new label will be use. This contour following algorithm will be presented in \ref{subsec:ContourFollowing}. If the component is small or its gradient is week, we will use its parent's label to mark this component. The label will be propagated in checking its 4 neighbors. If a neighbor is inside the image, still not labeled and having same sign of the region, it will be labeled and the label will continue propagate from that point. The sign agreement can be checked simply by a xor operation between sign of region and sign of that point on the Laplacian. During the labeling process, other information can also be gathered such as the bounding box, area, average gray level of each component. 
 \par 
 As text must be large enough, if it is not, even the human eye can not recognize them, nor the OCR. Size of a component will be verified by its perimeter and bounding box size. A component is considered noteworthy if:
 \begin{itemize} 
@@ -105,10 +105,10 @@ The pseudo code is presented in Algorithm \ref{alg:labeling}
 \end{algorithm}
 
 \subsection{Average gradient on contour calculation} \label{subsec:ContourFollowing}
-\par We prune the tree during the labeling process to reduce the calculation cost of reading the image multiple time. By merging nodes which has low contrast with the upper node which means having low gradient in the contour the remain tree only maintain high contrast component. By calculate average gradient of these points, we can decide which node to remove. There are many approach to obtain the contour, for example we can use a dilation follow by a erosion using a element cross as structure element to obtain the contour. But the calculation of erosion and dilation costs. Because the topology is simplified by the well-composed interpolation, which made every component is surround by only one other component, we can apply a simple contour following method to follow its outer contour.
+\par We prune the tree during the labeling process to reduce the calculation cost of reading the image multiple time. By merging nodes which has low contrast with the upper node which means having low gradient in the contour the remain tree only maintain high contrast component. By calculate average gradient of these points, we can decide which node to remove. There are many approach to obtain the contour, for example we can use a dilation follow by a erosion using an element cross as structure element to obtain the contour. But the calculation of erosion and dilation costs. Because the topology is simplified by the well-composed interpolation, which made every component is surround by only one other component, we can apply a simple contour following method to follow its outer contour.
 \par As after each label propagation, component which is not yet labeled will remain null and surround by another label. For every new component detected except the first one (root), we will first follow the outer contour of the object to calculate its average gradient. As we read the image from left to right, top to bottom, first point of new region is always the left top most point of that component. 
 
-The algorithm will try to follow the component in clockwise direction so the object will always on the left of each point of the contour. We initialize the starting point is the one on the left of first point of component. There are 8 possible direction of next point to advance (direction are numbered as in \ref{fig:directionToSearch}). The next point must be the one which is labeled and has a non labeled point on its left. The searching order is a semicircle clockwise from last direction plus a semicircle counter clockwise from last-direction (for example if the last direction is 0, we will check these directions in this order: 0 1 2 3 7 6 5 4). We continue this until reach the starting point. The length and gradient will be gathered during the process. 
+The algorithm will try to follow the component in clockwise direction so the object will always on the left of each point of the contour. We initialize the starting point is the one on the left of first point of component. There are 8 possible direction of next point to advance (direction are numbered as in \ref{fig:directionToSearch}). The next point must be the one which is labeled and has a non labeled point on its left. The searching order is a semicircle clockwise from last direction plus a semicircle counter-clockwise from last-direction (for example if the last direction is 0, we will check these directions in this order: 0 1 2 3 7 6 5 4). We continue this until reach the starting point. The length and gradient will be gathered during the process. 
 
 \begin{figure}
 \includegraphics[width=2.5cm]{gradient/7.png}
@@ -125,7 +125,7 @@ The algorithm will try to follow the component in clockwise direction so the obj
 \includegraphics[width=2.5cm]{gradient/4.png}
 \includegraphics[width=2.5cm]{gradient/3.png}
 \centering
-\caption{Possible positions of next point}
+\caption{Possible positions of next point on the outer contour}
 \label{fig:directionToSearch}
 \end{figure}
 
@@ -176,7 +176,7 @@ We only interest in word which has more than 2 characters. Only components with 
 In applying to the height of 2 components, it becomes simple. Components are only grouped if the similarity is greater than 0.5.
 
 \begin{center}
-$J(\mathbf{height1},\mathbf{height2}) = \dfrac{(min(height1,height2)}{min(height1,height2)} < 0.5$. 
+$J(\mathbf{height1},\mathbf{height2}) = \dfrac{min(height1,height2)}{min(height1,height2)} < 0.5$. 
 \end{center}
 
 
