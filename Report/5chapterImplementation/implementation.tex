@@ -181,7 +181,7 @@ $J(\mathbf{height1},\mathbf{height2}) = \dfrac{min(height1,height2)}{min(height1
 
 
 \par We use different strategy to find the neighbors of components. At first, only one searching pointer is use and it situates in the center of that component. We also use 3 different searching pointer, one in the middle, one at 10\% of height from the top and another at 10\% of height from the bottom. 
-The pseudo code is present in Algorithm \ref{alg:WordCandidate} for the case of only one searching pointer in the center..
+The pseudo code is present in Algorithm \ref{alg:WordCandidate} for the case of only one searching pointer in the center.
 
 \begin{algorithm}
 \caption{Tree prunning and Word candidate grouping}\label{alg:WordCandidate}
@@ -252,3 +252,14 @@ The pseudo code is present in Algorithm \ref{alg:WordCandidate} for the case of 
 \end{algorithmic}
 
 \end{algorithm}
+
+\section{Optimization}
+
+The labeling process cost the most (on average 99.81\% processing time). So we arm to improve this part. On the first realization of the algorithm, we used the practical tools provided by the olena library to read through the image and navigate to neighbor of a point. One deficiency of these tools is that we have to frequently each neighbor if it is inside the image domain. The method provided check coordinates of a point and compare with the image boundary, it also have to convert the coordinates in to index to reach the data on the storage array. It slows down and affects the speed of algorithm. 
+
+
+We change the navigate method. In stead of navigate using coordinates, we will now navigate using the index of image pixel on the storage array. To verify if we reach the end of a line or if a point is out of the image boundary, a one-pixel-width border is added into the original image with a special value. This modification has great impact. Average processing time on 233 images from the test set of ICDAR2013 reduce from 3912.29 ms to 2470,88 ms (36.84\%).
+
+
+
+

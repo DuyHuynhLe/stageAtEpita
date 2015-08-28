@@ -143,7 +143,7 @@ must verify interval(a,b) $\cap$ interval(c,d) $\neq \varnothing$ , where interv
 Latecki has shown in \cite{Latecki.98.JMIV} that a topology preserved digitization process must result in a well-composed image. An image, especially lossy compressed one, is not $a priori$ well-composed. Furthermore, as only one type of connectivity is used so no choice of connectivity pair needed to be made. In consequence, self-dual operation can be defined without any arbitrate choice. Its attribute has motivated the development of algorithms to make an image well-composed. There are currently 2 approach to get a well-composed image from the original image: by changing it pixel value (with the possibility of alter the image's topology) or by a well-composed interpolation.
 
 
-\section{Connected filter}
+\section{Connected operators and morphological tree}
 Motivated by families of filters by reconstruction, the notion of filter by reconstruction is introduced in \cite{Salembier95flatzones} \cite{Serra1993}. It work by simplifier the topographic map of images. The most important feature of this type of operator is preservation of contours \cite{Salembier2009}: they does not create new contours nor shift them.
 \subsection{Morphological Tree-Based Image Representation}
 One strategy to define connected operators replies on a hierarchical region-based representation of the input image, in another word, a tree. The filtering step is done by pruning that tree and the output image is compute by reconstructing the pruned tree.  Tree of shapes is a contrast-invariant image representation which is defined in \cite{Monasse.2000}.
@@ -154,4 +154,4 @@ One strategy to define connected operators replies on a hierarchical region-base
 
 The min and max tree are easily compute with a few line of code \cite{berger.07.icip} and the tree of shape can be obtain thanks to \cite{geraud.13.ismm}. The tree encoding is very compact in term of memory: the parenthood relationship between pixels is an image having the same size of the input. 
 
-	
+\subsection{Some application}

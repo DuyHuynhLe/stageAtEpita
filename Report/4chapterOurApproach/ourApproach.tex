@@ -1,6 +1,6 @@
    
 \graphicspath{ {4chapterOurApproach/image/} }
-\chapter{Approach} \label{Approach}
+\chapter{Proposed approach for text detection} \label{Approach}
 \section{Hypothesis}
 \par
 Texts included in images contain a rich information source. They are difficult to be detected due to many factors as presented in \ref{State-of-Art} as their various sizes, luminance, complex milieu but interesting text can be narrow down by some criteria:
@@ -39,7 +39,7 @@ The ToSoL is the representation of region having similar luminance and their inc
 	\centering
 	\begin{subfigure}[t]{2in}
 		\centering
-	 	\includegraphics[width=2.5cm]{tos/tree.png} \caption{Original image}\label{fig:tosOri} \end{subfigure}   
+	 	\fbox{\includegraphics[width=2.5cm]{tos/tree.png}} \caption{Original image}\label{fig:tosOri} \end{subfigure}   
 	\begin{subfigure}[t]{2in}
 		\centering
 	 	\includegraphics[width=2.5cm]{tos/lap2.png} \caption{Laplacian, red is negative, green is positive and blue is zero}\label{fig:tosLap} \end{subfigure}   
@@ -51,13 +51,13 @@ The ToSoL is the representation of region having similar luminance and their inc
 	\begin{subfigure}[t]{2in}
 		\centering
 		\includegraphics[width=5cm]{tos/parent.png} 
-		\caption{The Tree will be present as a table}\label{fig:tosParent} \end{subfigure}					
+		\caption{Colorization of the parent table.}\label{fig:tosParent} \end{subfigure}					
 	\centering
 	\caption[Example of \textit{Tree of Shape of Laplacian}] {Example of Tree of Shape of Laplacian in segmentation of images.  }
 	\label{fig:ToS}
 \end{figure}
 
-\par That ToSoL will be pruned using different condition in order to eliminate components which is impossible to be character. The hierarchical structure also allows us to group candidate in the same back ground (having same parent).
+\par That ToSoL will be pruned using different condition in order to eliminate components which is impossible to be character. The hierarchical structure also allows us to group candidate in the same back ground (having same parent). 
 
 \par The propose approach will follow this procedure: First, the input image will be converted in to gray level image. Then the morphological Laplacian will be calculated. The morphological gradient will also be calculated to determine if a zero-crossing of Laplacian is strong enough to be kept. The well-composed interpolation will be applied on these results. After that, a tree of shape will be calculated from the well-composed interpolated Laplacian: each node will be labeled with a same value, the parent relation will be given by a table of parent which shows us the parent of each label. Not all zeros crossing will be the beginning of a new node, new node only be started if the average gradient on the outer contour is stronger than a threshold. Then, components which have possible shape and similar size will be grouped together to form word candidates which will remove stand alone candidate which is rarely a case of a text. A bounding box will be calculated for each word candidate. The false positives will be eliminated during the procedures en pruning the tree by shape, size, how strong the region is in term of Laplacian...
 
