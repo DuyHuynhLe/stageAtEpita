@@ -27,6 +27,7 @@
 \def\BState{\State\hskip-\ALG@thistlm}
 \makeatother
 \usepackage{indentfirst}
+\usepackage{pdfpages}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
 % styles for flowcharts
@@ -35,6 +36,8 @@
 minimum height=2em]
 \author{HUYNH Le Duy}
 \begin{document}
+\includepdf{0TitlePage/title}
+\import{0TitlePage/}{title}
 \tableofcontents
 \listoffigures
 \import{1chapterIntroduction/}{chapterIntroduction}
