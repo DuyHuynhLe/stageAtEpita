@@ -32,7 +32,7 @@ Morphology come from Greek and means the "study of shape". Mathematical Morpholo
 		\includegraphics{bin/laplacian.png} 
 		\caption{$\vartriangle_S (F)$}\label{fig:laplacianbin} \end{subfigure}					
 	\centering
-	\caption[Example of \textit{morphological operations}] {Binary Morphological Operations. The morphological Laplacian is colorized by Green (positive), red (negative) and black (zero) }
+	\caption[Example of \textit{morphological operations} on binary image] {Binary Morphological Operations. The morphological Laplacian is colorized by Green (positive), red (negative) and black (zero) }
 	\label{fig:binOperations}
 \end{figure}
 
@@ -63,7 +63,7 @@ Morphology come from Greek and means the "study of shape". Mathematical Morpholo
 		\includegraphics{grayLevel/laplacian.png} 
 		\caption{$\vartriangle_S (F)$}\label{fig:laplaciangrayLevel} \end{subfigure}					
 	\centering
-	\caption[Example of \textit{morphological operations}] {Morphological Operations on set, using a square 10x10 pixels as the structuring element. (The laplacian is colorized by Green (positive), red (negative) and black (zero)) }
+	\caption[Example of \textit{morphological operations} on gray level image] {Morphological Operations on set, using a square 10x10 pixels as the structuring element. (The laplacian is colorized by Green (positive), red (negative) and black (zero)) }
 	\label{fig:grayLevelOperations}
 \end{figure}
 
@@ -97,7 +97,7 @@ A self-dual operator processes the image contents regardless its contrast \cite{
 	\begin{subfigure}{0.3\textwidth}
 		\includegraphics{im3.png} \caption{}\label{fig:baby} \end{subfigure}
 	\centering
-	\caption[Example of \textit{subjects}] {From the original gray level image \ref{fig:gray}, the subject can be either the mother \ref{fig:mother} (dark over bright) or the baby \ref{fig:baby} (bright over dark) }
+	\caption[Example of \textit{ subjects} can be either bright over dart or dart over bright] {From the original gray level image \ref{fig:gray}, the subject can be either the mother \ref{fig:mother} (dark over bright) or the baby \ref{fig:baby} (bright over dark) }
 	\label{fig:motheAndBaby}
 \end{figure}
 
@@ -122,13 +122,13 @@ For example, if the image \ref{fig:topo} is describe by the pair $(c_4,c_8)$ (th
 	\begin{subfigure}[b]{0.3\textwidth}
 		\includegraphics[width=5cm]{topoc.png} \caption{}\label{fig:topoc} \end{subfigure}
 	\centering
-	\caption[Example of "Jordan pair" of connectivity] {Example of "Jordan pair" of connectivity}
+	\caption[Example of \textit{Jordan pair} of connectivity] {Example of \textit{Jordan pair} of connectivity}
 	\label{fig:Jordanpair}
 \end{figure}
 
 
 \section{Well-composed Images} \label{Wellcomposed}
-Based on the digital topology framework, notion of well-composed has been introduced to characterize the binary images whose structure intrinsically avoids the connectivity paradox. As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{S}$ are weakly well-composed. well-composednessed can be verified  using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is well-composed if these configuration do not appear. 
+Based on the digital topology framework, notion of well-composed has been introduced to characterize the binary images whose structure intrinsically avoids the connectivity paradox. As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{S}$ are weakly well-composed. Well-composedness can be verified  using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is well-composed if these configuration do not appear. 
 \par
 The notion of well-composednessed has also been extended to gray-level images. A gray-level image $\mu$ is well-composed if any set $[\mu \geq \lambda ]$ is well-composed. The extended version of "critical configuration" is that every block 
 \begin{tabular}{|c|c|}

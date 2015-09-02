@@ -17,7 +17,7 @@ Text in images can be divided into 2 classes: scene text and  born-digital text.
 	\begin{subfigure}[b]{0.3\textwidth}
 		\includegraphics[width=5cm]{img3.jpg} \caption{}\label{fig:bornDigital} \end{subfigure}
 	\centering
-	\caption[Example of \textit{text}] {Example of focused scene text \ref{fig:focused} , incidental scene text \ref{fig:incidental} and born-digital text \ref{fig:bornDigital} }
+	\caption[Example of different \textit{text in image} problems] {Example of different \textit{text in image} problems: focused scene text \ref{fig:focused} , incidental scene text \ref{fig:incidental} and born-digital text \ref{fig:bornDigital} }
 	\label{fig:example}
 \end{figure}
 
@@ -112,8 +112,7 @@ The hybrid methods combine both approaches. Pan et al. \cite{Pan2009} uses HOG f
 Different features were used to text localization include color from different color space \cite{yi.2012.TIP} \cite{Roubtsova.2012.SPIE}, edge and gradient \cite{Pillai.2013.ICCPCT}, \cite{Chen.2004.CVPR}. New features such as stroke width \cite{Subramanian.2007.ICDAR} \cite{Epshtein.2010.CVPR} , corner \cite{Zhao.2011.TIP}, extremals region \cite{Neumann.2011.ICDAR} \cite{xucheng.2013.pami} or character appearance \cite{Ye.2014.CBDAR} \cite{Yi.2013.CVIU} has recently studied.
 
 
-\textbf{Color:} A readable text must have consistent and distinguishable color which contrasts with its background \cite{Liang.2005.IJDAR}. Color is widely used as feature to localize text \cite{Jain.1998.ICPR} \cite{Wang.2003.PR} \cite{Lee.2010.ICPR} although it seems to be sensitive to uneven lighting, multi-color and complicate textured which weaken color feature.
-\cite{39} and later \cite{Nikolaou.2009.ISTI} simplify the color images by color reduction and then cluster and group connected components in to candidate. Some authors use different color space to extract and analysis color feature such as Hue-Saturation-Intensity (HSI) \cite{Garcia.2000.ICASSP}, HSI plus intensity gradient \cite{Neumann12} or Hue-Lightness-Saturation \cite{Karatzas.2004.ICPR}
+\textbf{Color:} A readable text must have consistent and distinguishable color which contrasts with its background \cite{Liang.2005.IJDAR}. Color is widely used as feature to localize text \cite{Jain.1998.ICPR} \cite{Wang.2003.PR} \cite{Lee.2010.ICPR} although it seems to be sensitive to uneven lighting, multi-color and complicate textured which weaken color feature. \cite{Nikolaou.2009.ISTI} simplify the color images by color reduction and then cluster and group connected components in to candidate. Some authors use different color space to extract and analysis color feature such as Hue-Saturation-Intensity (HSI) \cite{Garcia.2000.ICASSP}, HSI plus intensity gradient \cite{Neumann12} or Hue-Lightness-Saturation \cite{Karatzas.2004.ICPR}
 
 
 \textbf{Edge and gradient approach} assumes that text has strong edges against its background. Therefore edge detector and gradient map can be used to detect character candidate. Edge detector \cite{Ye.2003.ICICS} (Sobel) \cite{Pillai.2013.ICCPCT} \cite{Shiva.2008.ICPR} and gradient was used widely in connected component. Sometimes they was used as a feature in sliding windows approaches \cite{Chen.2004.CVPR} \cite{Hanif.2008.ICPR}.

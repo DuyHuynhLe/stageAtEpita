@@ -2,7 +2,10 @@
 \graphicspath{ {5chapterImplementation/image/} }
 \chapter{Implementation}
 
-This chapter will clarify the implementation of the approach present in \ref{Approach}. 
+This chapter will clarify the implementation of the approach present in \ref{Approach}.
+\section{Olena Image Processing Platform}
+This algorithm will be implemented using the free image processing platform of LRDE: Olena. It is a platform dedicated to image processing and pattern recognition whose core component is a generic and efficient C++ library called Milena. Milena provides a framework to implement simple, fast, safe, reusable and extensible image processing tool chains. The library provides many ready-to-use image data structures (regular 1D, 2D, 3D images, graph-based images, etc.) and algorithms. Milena's algorithms are built upon classical entities from the image processing field (images, points/sites, domains, neighborhoods, etc.). This design allows image processing developers and practitioners to easily understand, modify, develop and extend new algorithms while retaining the core traits of Milena: genericity and efficiency.
+
 \section{Gray-level conversion and well-composed interpolation}
 First of all, the color input images will be transformed into gray level image using its luminance information. Most digital images using the RGB (or sRGB) which use the ITU-R BT.709 primaries. The coefficients defined to calculate the relative luminace from linear RGB components is: $Y = 0.2126R + 0.7152G + 0.0722B$. The formula reflects the spectral sensitivity of human visual perception of brightness: green light contributes the most to the intensity perceived by humans, and blue light the least. Other steps will work on this image. 
 \par At first, morphological Laplacian is calculated using a relatively large size structuring element to reduce influences of small components. A morphological gradient will also be calculated to provide information for pruning the tree \textit{a priori}. These output images will be doubled the resolution using a well-composed Interpolation.
