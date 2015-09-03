@@ -1,7 +1,7 @@
 
 \graphicspath{ {3chapterTheory/image/} }
 \chapter{Theoretical Background}
-\section{Mathematical morphology}
+\section{Mathematical morphology} \label{MM}
 %------------------------------------------------------------
 %--------
 %------------------------------------------------------------
@@ -128,7 +128,7 @@ For example, if the image \ref{fig:topo} is describe by the pair $(c_4,c_8)$ (th
 
 
 \section{Well-composed Images} \label{Wellcomposed}
-Based on the digital topology framework, notion of well-composed has been introduced to characterize the binary images whose structure intrinsically avoids the connectivity paradox. As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{S}$ are weakly well-composed. Well-composedness can be verified  using the notion of "critical configurations" which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is well-composed if these configuration do not appear. 
+Based on the digital topology framework, notion of well-composed has been introduced to characterize the binary images whose structure intrinsically avoids the connectivity paradox. As defined in \cite{Latecki95}, a 2D set S is weakly well-composed if any 8-component of S is a 4 component. S is well-composed if both S and its complement $\bar{S}$ are weakly well-composed. Well-composedness can be verified  using the notion of \textit{critical configurations} which are \includegraphics{confi1.jpg} and \includegraphics{confi2.jpg} : S is well-composed if these configuration do not appear. 
 \par
 The notion of well-composednessed has also been extended to gray-level images. A gray-level image $\mu$ is well-composed if any set $[\mu \geq \lambda ]$ is well-composed. The extended version of "critical configuration" is that every block 
 \begin{tabular}{|c|c|}
@@ -144,7 +144,7 @@ Latecki has shown in \cite{Latecki.98.JMIV} that a topology preserved digitizati
 
 
 \section{Connected operators and morphological tree}
-Motivated by families of filters by reconstruction, the notion of filter by reconstruction is introduced in \cite{Salembier95flatzones} \cite{Serra1993}. It work by simplifier the topographic map of images. The most important feature of this type of operator is preservation of contours \cite{Salembier2009}: they does not create new contours nor shift them.
+Motivated by families of filters by reconstruction, the notion of connected operators is introduced in \cite{Salembier95flatzones} \cite{Serra1993}. As said in \ref{MM}, connected operators work by simplify the topographic map of images. The most important feature of this type of operator is preservation of contours \cite{Salembier2009}: they does not create new contours nor shift them. 
 \subsection{Morphological Tree-Based Image Representation}
 One strategy to define connected operators replies on a hierarchical region-based representation of the input image, in another word, a tree. The filtering step is done by pruning that tree and the output image is compute by reconstructing the pruned tree.  Tree of shapes is a contrast-invariant image representation which is defined in \cite{Monasse.2000}.
 \paragraph{} \textbf{A Couple of Dual Trees}: given an image $\mu $ in nD: $\mathbb{Z}^{n} \rightarrow \mathbb{Z} $, the lower cuts of $\mu$ are defined by 
@@ -155,3 +155,4 @@ One strategy to define connected operators replies on a hierarchical region-base
 The min and max tree are easily compute with a few line of code \cite{berger.07.icip} and the tree of shape can be obtain thanks to \cite{geraud.13.ismm}. The tree encoding is very compact in term of memory: the parenthood relationship between pixels is an image having the same size of the input. 
 
 \subsection{Some application}
+The connected operators are attractive in applications where the image has to be simplified without losing information about the contours. A large number of simplification criteria such as size, area, contrast or complexity can be obtained with these operators. They found application in image simplification and segmentation.
