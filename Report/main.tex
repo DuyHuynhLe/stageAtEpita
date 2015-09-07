@@ -22,6 +22,7 @@
 %Continuous 
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
 
 %for pseudocode
 \usepackage{algorithm}
@@ -52,6 +53,7 @@ minimum height=2em]
 \import{0TitlePage/}{title}
 \tableofcontents
 \listoffigures
+\listoftables
 \import{1chapterIntroduction/}{chapterIntroduction}
 \import{2chapterStateOfArt/}{chapterStateOfArt}
 \import{3chapterTheory/}{chapterTheory}
@@ -63,6 +65,7 @@ minimum height=2em]
 \bibliographystyle{plain}
 \bibliography{Reference/bibli}
 
+\includepdf{0TitlePage/back}
 \end{document}
 
 %seem good on chromatics

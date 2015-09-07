@@ -1,36 +1,36 @@
 
 \graphicspath{ {6chapterExperimental/image/} }
 \chapter{Experimental result}
-\section{Test image set} \label{test_set}
-To evaluate our method, we use the publicly accessible benchmark of natural scenes containing text of the ICDAR 2013 competitions. The test set used come from the second challenge: "Focused Scene Text". The test set contains 233 scenes images focused on text on banners, signs or labels in real life, most of them are in the horizontal direction. The ground truth was create manually by observing and painting each character pixels. This operator made the ground-truth of ICDAR 2013 data set more reliable than the ICDAR 2011.   
+\section{Data set} \label{test_set}
+To evaluate our method, we use the publicly accessible benchmark of natural scenes containing text of the ICDAR 2013 competitions. The data set comes from the second challenge: "Focused Scene Text". The test set contains 233 scene images focused on text on banners, signs or labels in real life, most of them are in the horizontal direction. The ground truth was created manually by observing and painting each character pixels. This process made the ground-truth of ICDAR 2013 data set more reliable than the ICDAR 2011.   
  
-\section{Evaluation Protocols}
-In this section, we summarize the protocol for text detection and recognition evaluation used. We used the IDCAR protocol DelEval by Wolf et al \cite{WolfIJDAR2006} which is most commonly adopted. DelEval detection protocol supports both one-to-one and on-to-many matches between the ground truth and detection as in \ref{fig:GroundTruthMatch}. It also considers over-split and over-merge of detection. The performance of a detection algorithm is illustrated intuitively by performance graphs which present object level precision and recall depending on constraints on detection quality.
+\section{Evaluation protocols}
+In this section, we summarize the protocol which is used for text detection and recognition evaluation. We use the IDCAR protocol DelEval by Wolf et al \cite{WolfIJDAR2006} which is most commonly adopted. DelEval detection protocol supports both one-to-one and one-to-many matches between the ground truth and detection as in Figure \ref{fig:GroundTruthMatch}. It also considers over-split and over-merge of detection.
 \begin{figure}
 \begin{center}
 
 
 	\begin{subfigure}[b]{\textwidth}
-	 	\includegraphics[scale=0.5]{oneOne.png} \centering \caption{}\label{fig:oneOne} \end{subfigure}
+	 	\includegraphics[scale=0.5]{oneOne.png} \centering \caption{one-to-one match}\label{fig:oneOne} \end{subfigure}
 		
 	\begin{subfigure}[b]{\textwidth}
-		\includegraphics[scale=0.5]{manyOne.png} \centering	 \caption{}\label{fig:manyOne} \end{subfigure}		 	
+		\includegraphics[scale=0.5]{manyOne.png} \centering	 \caption{a merge: a one-to-many match with one detected rectangle}\label{fig:manyOne} \end{subfigure}		 	
 	 	
 	\begin{subfigure}[b]{\textwidth}
-		\includegraphics[scale=0.5]{oneMany.png} \centering	 \caption{}\label{fig:oneMany} \end{subfigure}	
+		\includegraphics[scale=0.5]{oneMany.png} \centering	 \caption{a split: a one-to-many match with one ground truth rectangle.}\label{fig:oneMany} \end{subfigure}	
 
 
 	
 	\begin{subfigure}[b]{\textwidth}
 		\includegraphics[height = 1cm]{comment.png} \centering	 \caption{}\label{fig:comment} \end{subfigure}
 \end{center}
-	\caption[Example of ground truth match types] {Different match types between ground truth rectangles and detected rectangles: \ref{fig:oneOne} one-to-one match; \ref{fig:manyOne} a merge: a one-to-many match with one detected rectangle; \ref{fig:oneMany} a split: a one-to-many match with one ground truth rectangle.}
+	\caption[Example of ground truth match types] {Different match types between ground truth rectangles and detected rectangles}
 	\label{fig:GroundTruthMatch}
 \end{figure}
 
-\section{Result and comments}
-\subsection*{Outputs of the algorithm}
-Through our process, the input images \ref{fig:inputImage} will be converted into gray level image \ref{fig:grayScale}, then the interpolated laplacian map will be created \ref{fig:Laplacian}. Along with the laplacian map, a gradient map \ref{fig:gradient} will also be calculated for addition information. Through experimental, The element structural used is a 11x11 square for both laplacian and gradient as this size is large enough to ignore small component but does not destroy text structure. Components will be labeled \ref{fig:labeled}. During the labeling process, some attributes, which are in section \ref{labeling}, will be checked during the contour following process. Contour of removed component can be seen in \ref{fig:labeling_contour} (red contour). As the laplacian is sensitive to noise so there are numerous component has been introduced, they were mostly removed by thresholding the value obtain by following the outside contour of each component (bounding boxes of components will also be calculated at the same time\ref{fig:BoundingBoxOfCharacter}). When we process the example image \ref{fig:inputImage} from the ICDAR2013 set, 14650 components was removed because they are too small, 12623 components which passed the size threshold are removed by gradient threshold, 102 others components are removed after by the ratio criteria, only 149 components are kept as character candidates. 
+\section{Results and comments}
+\subsection{Outputs of the algorithm}
+Through our process, the input image (Figure \ref{fig:inputImage}) will be converted into gray level image ( Figure \ref{fig:grayScale}), then the interpolated Laplacian map will be created (Figure \ref{fig:Laplacian}). Along with the laplacian map, a gradient map \ref{fig:gradient} will also be calculated for addition information. Through experiments, the used structural element is a 11x11 square for both Laplacian and gradient as this size is large enough to ignore small component but does not destroy text structure. Components will be labeled \ref{fig:BoundingBoxOfCharacter}. During the labeling process, some attributes described in section \ref{labeling}, will be checked during the contour following process. Contour of removed components can be seen in \ref{fig:labeling_contour} (red contour). As the Laplacian is sensitive to noise so there are numerous components has been introduced, they are mostly removed by thresholding the value obtain by following the outside contour of each component (bounding boxes of components will also be calculated at the same time\ref{fig:BoundingBoxOfCharacter}). When we process the example image \ref{fig:inputImage} from the ICDAR2013 set, 14650 components are removed because they are too small, 12623 components which pass the size threshold are removed by gradient threshold, 102 other components are removed by the ratio criteria, only 149 components are kept as character candidates. 
 
 
 \begin{figure}
@@ -52,7 +52,7 @@ Through our process, the input images \ref{fig:inputImage} will be converted int
 \end{figure}
 
 
-Components will grouped into words candidates \ref{fig:BoundingBoxOfWordCandidateOnLabel} using algorithm in section \ref{Grouping}. The bounding box will be scale back to the original resolution (before interpolation) of input image \ref{fig:BoundingBoxOfWordCandidate}.
+Components will grouped into words candidates \ref{fig:BoundingBoxOfWordCandidateOnLabel} using algorithm in section \ref{Grouping}. The bounding box will be scaled back to the original resolution (before interpolation) of input image \ref{fig:BoundingBoxOfWordCandidate}.
 
 
 \begin{figure}
@@ -79,25 +79,25 @@ Components will grouped into words candidates \ref{fig:BoundingBoxOfWordCandidat
 	\label{fig:Wordcandidatesoutput}
 \end{figure}
 \subsection{Modification of algorithms}
-The original approach removes most of weak component introduced by the laplacian, but the results shown that high number of false positive remain. We then try to further eliminate the false positive by 2 approaches. First, we use a classic method: blurring out the original image with a small kernel (3 pixels) to reduces noises. Although it destroy the shapes of component and modifies contours, the a small kernel keeps this modifications. We test several combination using the same threshold to find the best one:
+The original approach removes most of weak components introduced by the laplacian, but the results show that high number of false positives remains. We then try to further eliminate the false positives by 2 approaches. First, we use a classic method: blurring out the original image with a small Gaussian kernel (3 pixels) to reduce noise. Although it destroys the shape of component and modifies contours, the a small kernel keeps this modifications light enough. We test several combinations using the same threshold to find the best one:
 
 \begin{itemize}
 \item {\textbf{CP1}} : Laplacian and gradient are calculated from the original gray level image.
 \item {\textbf{CP2}} : Laplacian is calculated from the original image and gradient is calculated from the blurred image.
 \item {\textbf{CP3}} : Laplacian and gradient are calculated from the blurred image.
-\item {\textbf{CP4}} : Laplacian  and gradient is calculated from the original image.
+\item {\textbf{CP4}} : Laplacian is calculated from the blurred image and gradient is calculated from the original image.
 \end{itemize}
 
-Second, we use the laplacian value of each component as additional information to remove components with low contrast. The laplacian was first normalize into interval [-255;255] . At first, we uses the average of 10\% strongest points of that region as a feature to decide if the zero crossing is strong but the we find out that the peak value of each region is enough. We called the first approach average laplacian and the second one peak laplacian.
+Second, we use the Laplacian value of each component as additional information to remove components having low contrast. The laplacian was first normalized into interval [-255;255] . At first, we uses the average of 10\% strongest points of that region as a feature to decide if the zero crossing is strong but then we found out that the peak value of each region is enough. We called the first approach average laplacian and the second one peak laplacian.
 
 \subsection{Experimental}
-The bounding box coordinates will be extracted and verified with ground truth provided by ICDAR, using the DetEval protocol by $Wolf et al$ \cite{WolfIJDAR2006}
+The bounding boxes are extracted and compared to the ground truth provided by ICDAR \textit{Robust reading competition}, using the DetEval protocol by $Wolf et al$ \cite{WolfIJDAR2006}
 
 \begin {table}[H]
 \caption{Performance of our experiments}\label{tab:performanceOur} 
 \begin{tabular}{|c|c|c|c|}
 \hline 
-\textbf{Method} & \textbf{Recall} & \textbf{Precision} & \textbf{Hmean (F1)} \\ 
+\textbf{Method} & \textbf{Recall} & \textbf{Precision} & \textbf{F-measure)} \\ 
 \hline 
 CP3 + Average Laplacian, threshold = 70 & 63.96\% & 36.50\% & \textbf{46.48\%} \\ 
 \hline 
@@ -117,10 +117,10 @@ Propose approach \textbf{(CP1)} &\textbf{ 72.15\%} & 6.11\% & 11.26\% \\
 
 \end{table}
 
-The original approach (CP1) reaches the recall rate of 71.71\% which shows prospect. But there was too many false positives that decrease the overall performance. It causes by the high amount of false component detected, especially in images with complex background. It does not only decrease the precision but also make the grouping process much more expensive. For example, 3579 components was labeled for image No.218 in the mentioned set \ref{test_set}.
+The original approach (CP1) reaches the recall rate of 71.71\% which shows attractive prospect. But there are too many false positives that decrease the overall performance. It is caused by the high amount of detected false component, especially in images with complex background. It does not only decrease the precision but also make the grouping process much more expensive. For example, 3579 components was labeled for image No.218 in the ICDAR2013 data set (Section \ref{test_set}).
 
 
-Other modifications arm to increase the precision. Average laplacian criteria with threshold 65 was expected to prune more node from the tree but in fact it did a slight change. Approaches using blurred images decrease false positive rate by making small and weak components disappear. For example, test CP2 labels only 1018 components for the same image No.218. We have to trade of the recall rate as some low contrast text will pass below the threshold and small one deformed too much.
+Other modifications arm to increase the precision. Average laplacian criteria with threshold 65 was expected to prune more nodes from the tree but in fact it did a slight change. Approaches using blurred images decrease false positive rate by making small and weak components disappear. For example, test CP2 labels only 1018 components for the same image No.218. We have to trade of the recall rate as some low contrast text will pass below the threshold and small one deformed too much.
 
 
 The highest H-means obtained with a mix between CP3 and average laplacian using threshold at 70. This result only overcomes two other approaches from the competition at ICDAR 2013 \cite{ICDAR2013} because the low precision decreases the overall performance. In fact, the recall rate of our approaches are equivalent or higher than others. Pruning the tree using simple criteria maybe not enough as other methods which obtains high precision rate all used a verification step using a machine learning on the character candidate or text candidate .
