@@ -1,16 +1,22 @@
 
 \graphicspath{ {7chapterConclusion/image/} }
-\chapter{Conclusion}
+\chapter{Conclusion and perspectives}
+
+\section{Conclusion}
+In this work, we propose a morphological approach based on connected operators and well-composedness for text detection. This approach was designed to be fast and preserve the contour of text. It is consisted of two main stages. The first one is to design a text detection algorithm based on connected filter approach. The second stage is to improve the performance and optimize the speed of this algorithm. 
 
 
-In this work, a morphological approach, using connected operation and taking advantage of well-composedness, is presented and applied in the field of text detection. This approach was armed to be fast and reserved contour of text. This work consisted of two main stages. The first one is to design a text detection algorithm based on connected filter approach, using morphological Laplacian as feature to extract connected components. The second stage was spent with effort to improve the performance as well as the speed of this algorithm through optimization. 
+In the first stage of this work, we used the connected filter approach, who has good contour preservation property to design the text detection algorithm. The morphological Laplacian has been used as main feature to detect edge of component, together with gradient and other geometric attributes to eliminate of false positives before word candidate grouping. This algorithm was designed to prune the tree of shape during its construction so the image is only loaded once to reduce processing time. As a connected component approach, our work also provides the segmentation required by OCR. 
 
 
-In the first stage of this work, I have followed the connected filter approach, whose interesting properties is contour preserving to design the text detection algorithm. The morphological Laplacian has been used as main feature to detect edge of component, together with gradient and other geometric attributes for elimination of false positive. This algorithm was designed to prune the tree of shape during its construction so this images only need to be read once, which reduce processing time. As a connected component approach, our work also provide the segmentation need by OCR. 
-
-
-This work has succeed in realization of a complete text detection chain, including character candidate isolation (through construction and pruning the tree of shape of Laplacian) and word candidate grouping. This approach shows promises as it gives a high recall rate, although the precision is low, these component can be later eliminated by OCRs in an end-to-end system.
+This work provides complete text detection chain, character candidate isolation (through construction and pruning of the tree of shape of Laplacian) and word candidate grouping. The proposed approach is promising as it gives a high recall rate, although the precision is relative low, the false positives can be later eliminated by OCRs in an end-to-end system.
   
 
-The second stage of this work was contributed to improvement of precision and optimization of process speed. More criteria was added to eliminate false positives and to improve precision rate. For the false positives elimination parts, it is shown that applying a Gaussian filter to eliminate noises slightly improve precision with small tradeoff on recall rate. Other criteria which eliminate week contour and small area also improve the performance. The optimization parts was spend on improve the execution of this implementation by correction of code to reduce memory usage and speed up the image scanning part. After the improved image scanning part the process run 36.84\% faster on average when applied to the ICDAR2013 focused scene text set. 
+The second stage of our work was devoted to improve precision rate and optimize process speed. More criteria were added to eliminate false positives and to improve precision rate. For the false positives elimination parts, it has been shown that applying a Gaussian filter to eliminate noises slightly improves precision with small tradeoff the recall rate. Other criteria eliminating week contours and small objects also improve the performance. The optimization part was achieved by reducing memory usage and speed up image scanning part. The optimization makes our algorithm 36.84\% faster on average when applied to the ICDAR2013 focused scene text set. 
+
+\section{Perspectives}
+
+In further work, more study is needed to improve the precision rate because experiments show that simple criteria are not enough to remove false positive. We can apply a verification step by a learning machine or the OCR engine. 
+
+Further work can also be done to improve the speed. In the current work, only the main loop was optimized and it improved the speed by 36.84\%. The contour following process still uses the old propagation form which is slow. It is possible to improve the execution time by further optimizing the labeling process by propagate using index of the data table for all process. Further more, the current method requires temporal storage of interpolated image, Laplacian and gradient which is used only in labeling process. We can re-implement this process using the interpolated information implicitly.
 

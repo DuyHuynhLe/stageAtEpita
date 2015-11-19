@@ -120,16 +120,16 @@ Propose approach \textbf{(CP1)} &\textbf{ 72.15\%} & 6.11\% & 11.26\% \\
 The original approach (CP1) reaches the recall rate of 71.71\% which shows attractive prospect. But there are too many false positives that decrease the overall performance. It is caused by the high amount of detected false component, especially in images with complex background. It does not only decrease the precision but also make the grouping process much more expensive. For example, 3579 components was labeled for image No.218 in the ICDAR2013 data set (Section \ref{test_set}).
 
 
-Other modifications arm to increase the precision. Average laplacian criteria with threshold 65 was expected to prune more nodes from the tree but in fact it did a slight change. Approaches using blurred images decrease false positive rate by making small and weak components disappear. For example, test CP2 labels only 1018 components for the same image No.218. We have to trade of the recall rate as some low contrast text will pass below the threshold and small one deformed too much.
+Other modifications aim to increase the precision. Average Laplacian thresholding at 65 was expected to prune more nodes from the tree but in fact it did a slight change. Approaches using blurred images decrease false positive rate by making small and weak components disappear. For example, test CP2 labels only 1018 components was labeled when apply on image No.218. We have to trade of the recall rate as some low contrast texts pass below the threshold and small ones are deformed too much.
 
 
-The highest H-means obtained with a mix between CP3 and average laplacian using threshold at 70. This result only overcomes two other approaches from the competition at ICDAR 2013 \cite{ICDAR2013} because the low precision decreases the overall performance. In fact, the recall rate of our approaches are equivalent or higher than others. Pruning the tree using simple criteria maybe not enough as other methods which obtains high precision rate all used a verification step using a machine learning on the character candidate or text candidate .
+The highest F-measure obtained with a mix between CP3 and average laplacian using threshold at 70. This result only overcomes two other approaches from the competition at ICDAR 2013 \cite{ICDAR2013} because the low precision decreases the overall performance. In fact, the recall rate of our approaches are equivalent or higher than others. Pruning the tree using simple criteria maybe not enough as other methods which obtains high precision rate all used a verification step using a machine learning on the character candidate or text candidate .
 
 \begin {table}[H]
 \caption{Some of our best approach, compare with submission for challenge 2 of ICDAR 2013 Robust Reading Competition. (*): method uses a machine learning (NI): No information, there are methods submitted without detail explanation}\label{tab:Comparation} 
 \begin{tabular}{|c|c|c|c|}
 \hline 
-\textbf{Method} & \textbf{Recall} & \textbf{Precision} & \textbf{Hmean (F1)} \\ 
+\textbf{Method} & \textbf{Recall} & \textbf{Precision} & \textbf{F-measure} \\ 
 \hline 
 USTB TexStar(*) & 66.45\% & \textbf{88.47\%} & \textbf{75.89\%} \\ 
 \hline 
@@ -161,10 +161,3 @@ Propose approach \textbf{(CP1)} &\textbf{ \textbf{72.15\%}} & 6.11\% & 11.26\% \
 \end{table}
 
 In term of execution time, most of the methods proposed did not gave reference about their speed except Neumann et al \cite{Neumann12} who arms to made a real time text detector \footnote{They define real-time text detection method is a method which has the processing time comparable with the time it would take a human to read the text.}. The processing time of \cite{Neumann12} for a particular image is 1380 ms (image 127 in the train set of ICDAR2013). Processing time of our original approach (CP1) for the same images is 5290.82 ms before optimization and 3249.41 ms after. This method needs more improvement.
-
-
-
-
-
-
-
